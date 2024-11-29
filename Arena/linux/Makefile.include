@@ -37,5 +37,5 @@ WTMP = $(WWW)
 #LIBDIR = $(WWW)/Library/Implementation/$(WWW_MACH)
 
 USELIBDIR = ../../Library/$(WWW_MACH)
-XLIBDIR = /usr/X11R6/lib
-OTHERLIB = -lm
+XLIBDIR = /usr/X11/lib
+OTHERLIB = -lm -lxcb
