@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<TITLE>Relative URLs (19-Sep-1995)</TITLE>
+</HEAD>
+<BODY>
+<H1>Relative URLs</H1>
+
+<H2>BASE URL: http://www.w3.org/devel/WWW/Library/User/Test/RelativeURL.html</H2>
+
+<H3>Normal Examples</H3>
+
+<UL>
+<LI><A HREF="ftp://ftp.w3.org/">ftp://ftp.w3.org/</A>
+<LI><A HREF="g">http://a/b/c/g</A>
+<LI><A HREF="./g">http://a/b/c/g</A>
+<LI><A HREF="g/">http://a/g</A>
+<LI><A HREF="/g">http://a/g</A>
+<LI><A HREF="//g">http://g</A>
+<LI><A HREF="?y">http://a/b/c/d;p?y</A>
+<LI><A HREF="g?y">http://a/b/c/g?y</A>
+<LI><A HREF="g?y/./x">http://a/b/c/g?y/./x</A>
+<LI><A HREF="#s">http://a/b/c/d;p?q#s</A>
+<LI><A HREF="g#s">http://a/b/c/g#s</A>
+<LI><A HREF="g#s/./x">http://a/b/c/g#s/./x</A>
+<LI><A HREF="g?y#s">http://a/b/c/g?y#s</A>
+<LI><A HREF=";x">http://a/b/c/d;x</A>
+<LI><A HREF="g;x">http://a/b/c/g;x</A>
+<LI><A HREF="g;x?y#s">http://a/b/c/g;x?y#s</A>
+<LI><A HREF=".">http://a/b/c/</A>
+<LI><A HREF="./">http://a/b/c/</A>
+<LI><A HREF="..">http://a/b/</A>
+<LI><A HREF="../">http://a/b/</A>
+<LI><A HREF="../g">http://a/b/g</A>
+<LI><A HREF="../..">http://a/</A>
+<LI><A HREF="../../">http://a/</A>
+<LI><A HREF="../../g">http://a/g</A>
+</UL>
+
+<H3>Abnormal Examples</H3>
+
+<UL>
+<LI><A HREF="">URL:http://a/b/c/d;p?q#f</A>
+<LI><A HREF="../../../g">URL:http://a/../g</A>
+<LI><A HREF="../../../../g">URL:http://a/../../g</A>
+<LI><A HREF="/./g">URL:http://a/./g</A>
+<LI><A HREF="/../g">URL:http://a/../g</A>
+<LI><A HREF="g.">URL:http://a/b/c/g.</A>
+<LI><A HREF=".g">URL:http://a/b/c/.g</A>
+<LI><A HREF="g..">URL:http://a/b/c/g..</A>
+<LI><A HREF="..g">URL:http://a/b/c/..g</A>
+<LI><A HREF="./../g">URL:http://a/b/g</A>
+<LI><A HREF="./g/.">URL:http://a/b/c/g/</A>
+<LI><A HREF="g/./h">URL:http://a/b/c/g/h</A>
+<LI><A HREF="g/../h">URL:http://a/b/c/h</A>
+<LI><A HREF="http:g">URL:http:g</A>
+<LI><A HREF="http:">URL:http:</A>
+</UL>
+</BODY>
+</HTML>
+

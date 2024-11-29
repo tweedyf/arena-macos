@@ -1,0 +1,773 @@
+EXPORTS
+;HTAABrow.c		@ 100
+HTAA_composeAuth	@ 101
+HTPasswordDialog	@ 102
+HTAA_retryWithAuth	@ 103
+HTAA_authentication	@ 104
+
+;HTAAUtil.c		@ 200
+HTAAScheme_enum		@ 201
+HTAAScheme_name		@ 202
+HTAA_templateMatch	@ 203
+HTAA_templateCaseMatch	@ 204
+HTAA_makeProtectionTemplate @ 205
+HTAA_parseArgList	@ 206
+
+;HTAccess.c		@ 300
+HTLib_appName		@ 301
+HTLib_appVersion	@ 302
+HTLib_name		@ 303
+HTLib_version		@ 304
+HTLib_secure		@ 305
+HTLib_setSecure		@ 306
+HTLibInit		@ 307
+HTLibTerminate		@ 308
+HTLoadAbsolute		@ 309
+HTLoadToStream		@ 310
+HTLoadRelative		@ 311
+HTLoadAnchor		@ 312
+HTLoadAnchorRecursive	@ 313
+HTSearch		@ 314
+HTSearchAbsolute	@ 315
+HTCopyAnchor		@ 316
+HTUploadAnchor		@ 317
+HTUpload_callback	@ 318
+
+;HTAlert.c		@ 400
+HTAlert_setInteractive	@ 401
+HTAlert_interactive	@ 402
+HTAlertCall_add		@ 403
+HTAlertCall_delete	@ 404
+HTAlertCall_deleteAll	@ 405
+HTAlertCall_find	@ 406
+HTAlert_setGlobal	@ 407
+HTAlert_global		@ 408
+HTAlert_add		@ 409
+HTAlert_delete		@ 410
+HTAlert_find		@ 411
+HTAlert_newReply	@ 412
+HTAlert_deleteReply	@ 413
+HTAlert_replyMessage	@ 414
+HTAlert_setReplyMessage	@ 415
+HTAlert_assignReplyMessage @ 416
+HTAlert_replySecret	@ 417
+HTAlert_setReplySecret	@ 418
+HTAlert_replyOutput	@ 419
+HTAlert_setReplyOutput	@ 420
+
+;HTAnchor.c		@ 500
+HTAnchor_findChild	@ 501
+HTAnchor_findAddress	@ 502
+HTAnchor_findChildAndLink @ 503
+HTLink_setDestination	@ 504
+HTLink_destination	@ 505
+HTLink_setType		@ 506
+HTLink_type		@ 507
+HTLink_setResult	@ 508
+HTLink_result		@ 509
+HTLink_setMethod	@ 510
+HTLink_method		@ 511
+HTAnchor_link		@ 512
+HTAnchor_findLink	@ 513
+HTAnchor_mainLink	@ 514
+HTAnchor_setMainLink	@ 515
+HTAnchor_subLinks	@ 516
+HTAnchor_setSubLinks	@ 517
+HTAnchor_mainLinkMethod	@ 518
+HTAnchor_followMainLink	@ 519
+HTAnchor_moveAllLinks	@ 520
+HTAnchor_removeLink	@ 521
+HTAnchor_removeAllLinks	@ 522
+HTAnchor_followTypedLink @ 523
+HTAnchor_makeLastChild	@ 524
+HTAnchor_deleteAll	@ 525
+HTAnchor_delete		@ 526
+HTAnchor_parent		@ 527
+HTAnchor_setDocument	@ 528
+HTAnchor_document	@ 529
+HTAnchor_address	@ 530
+HTAnchor_hasChildren	@ 531
+HTAnchor_clearIndex	@ 532
+HTAnchor_setIndex	@ 533
+HTAnchor_isIndex	@ 534
+HTAnchor_physical	@ 535
+HTAnchor_setPhysical	@ 536
+HTAnchor_cacheHit	@ 537
+HTAnchor_setCacheHit	@ 538
+HTAnchor_format		@ 539
+HTAnchor_setFormat	@ 540
+HTAnchor_charset	@ 541
+HTAnchor_setCharset	@ 542
+HTAnchor_level		@ 543
+HTAnchor_setLevel	@ 544
+HTAnchor_encoding	@ 545
+HTAnchor_setEncoding	@ 546
+HTAnchor_language	@ 547
+HTAnchor_setLanguage	@ 548
+HTAnchor_cte		@ 549
+HTAnchor_setCte		@ 550
+HTAnchor_length		@ 551
+HTAnchor_setLength	@ 552
+HTAnchor_methods	@ 553
+HTAnchor_setMethods	@ 554
+HTAnchor_appendMethods	@ 555
+HTAnchor_title		@ 556
+HTAnchor_setTitle	@ 557
+HTAnchor_appendTitle	@ 558
+HTAnchor_version	@ 559
+HTAnchor_setVersion	@ 560
+HTAnchor_derived	@ 561
+HTAnchor_setDerived	@ 562
+HTAnchor_date		@ 563
+HTAnchor_setDate	@ 564
+HTAnchor_expires	@ 565
+HTAnchor_setExpires	@ 566
+HTAnchor_lastModified	@ 567
+HTAnchor_setLastModified @ 568
+HTAnchor_Extra		@ 569
+HTAnchor_addExtra	@ 570
+HTAnchor_headerParsed	@ 571
+HTAnchor_setHeaderParsed @ 572
+HTAnchor_clearHeader	@ 573
+
+;HTArray.c		@ 600
+HTArray_new		@ 601
+HTArray_clear		@ 602
+HTArray_delete		@ 603
+HTArray_addObject	@ 604
+HTArray_sort		@ 605
+
+;HTAssoc.c		@ 700
+HTAssocList_new		@ 701
+HTAssocList_delete	@ 702
+HTAssocList_add		@ 703
+HTAssocList_lookup	@ 704
+
+;HTAtom.c		@ 800
+HTAtom_for		@ 801
+HTAtom_caseFor		@ 802
+HTAtom_deleteAll	@ 803
+HTAtom_templateMatches	@ 804
+
+;HTBInit.c		@ 900
+HTFileInit		@ 901
+
+;HTBTree.c		@ 1000
+HTBTree_object		@ 1001
+HTBTree_new		@ 1002
+HTBTree_free		@ 1003
+HTBTreeAndObject_free	@ 1004
+HTBTree_add		@ 1005
+HTBTree_next		@ 1006
+
+;HTBind.c		@ 1100
+HTBind_init		@ 1101
+HTBind_deleteAll	@ 1102
+HTBind_caseSensitive	@ 1103
+HTBind_delimiters	@ 1104
+HTBind_setDelimiters	@ 1105
+HTBind_addType		@ 1106
+HTBind_addEncoding	@ 1107
+HTBind_addLanguage	@ 1108
+HTBind_add		@ 1109
+HTBind_getSuffix	@ 1110
+HTBind_getDescription	@ 1111
+HTBind_getBindings	@ 1112
+HTBind_getFormat	@ 1113
+
+;HTBound.c		@ 1200
+HTBoundary		@ 1201
+
+;HTCache.c		@ 1300
+HTCache_clearMem	@ 1301
+HTCache_deleteAll	@ 1302
+HTCache_enable		@ 1303
+HTCache_disable		@ 1304
+HTCache_isEnabled	@ 1305
+HTCache_setRoot		@ 1306
+HTCache_getRoot		@ 1307
+HTCache_freeRoot	@ 1308
+HTMemoryCache_register	@ 1309
+HTMemoryCache_unRegister @ 1310
+HTMemoryCache_check	@ 1311
+HTCache_setExpiresMode	@ 1312
+HTCache_expiresMode	@ 1313
+HTCache_getReference	@ 1314
+HTCache_isValid		@ 1315
+HTCacheWriter		@ 1316
+
+;HTChunk.c		@ 1400
+HTChunk_new		@ 1401
+HTChunk_clear		@ 1402
+HTChunk_delete		@ 1403
+HTChunk_putc		@ 1404
+HTChunk_puts		@ 1405
+HTChunk_putb		@ 1406
+HTChunk_ensure		@ 1407
+
+;HTConLen.c		@ 1500
+HTContentCounter	@ 1501
+HTBuffer_new		@ 1502
+
+;HTDNS.c		@ 1600
+HTDNS_setTimeout	@ 1601
+HTDNS_timeout		@ 1602
+HTDNS_setSockTimeout	@ 1603
+HTDNS_sockTimeout	@ 1604
+HTDNS_serverClass	@ 1605
+HTDNS_setServerClass	@ 1606
+HTDNS_serverVersion	@ 1607
+HTDNS_setServerVersion	@ 1608
+HTDNS_connection	@ 1609
+HTDNS_setConnection	@ 1610
+HTDNS_socket		@ 1611
+HTDNS_setSocket		@ 1612
+HTDNS_socketCount	@ 1613
+HTDNS_clearActive	@ 1614
+HTDNS_setSockExpires	@ 1615
+HTDNS_sockExpires	@ 1616
+HTDNS_updateWeigths	@ 1617
+HTDNS_delete		@ 1618
+HTDNS_deleteAll		@ 1619
+HTDNS_closeSocket	@ 1620
+HTGetHostByName		@ 1621
+HTGetHostBySock		@ 1622
+
+;HTDescpt.c		@ 1700
+HTReadDescriptions	@ 1701
+HTFreeDescriptions	@ 1702
+HTGetDescription	@ 1703
+
+;HTDialog.c		@ 1800
+HTProgress		@ 1801
+HTConfirm		@ 1802
+HTPrompt		@ 1803
+HTPromptPassword	@ 1804
+HTPromptUsernameAndPassword @ 1805
+HTError_print		@ 1806
+HTError_response	@ 1807
+
+;HTDir.c		@ 1900
+HTDir_setWidth		@ 1901
+HTDir_new		@ 1902
+HTDir_addElement	@ 1903
+HTDir_free		@ 1904
+
+;HTEPtoCl.c		@ 2000
+HTCallClient		@ 2001
+
+;HTError.c		@ 2100
+HTError_add		@ 2101
+HTError_addSystem	@ 2102
+HTError_deleteAll	@ 2103
+HTError_deleteLast	@ 2104
+HTError_ignoreLast	@ 2105
+HTError_setIgnore	@ 2106
+HTError_show		@ 2107
+HTError_setShow		@ 2108
+HTError_doShow		@ 2109
+HTError_severity	@ 2110
+HTError_index		@ 2111
+HTError_parameter	@ 2112
+HTError_location	@ 2113
+
+;HTEscape.c		@ 2200
+HTEscape		@ 2201
+HTUnEscape		@ 2202
+
+;HTEvntrg.c		@ 2300
+HTEvent_winHandle	@ 2301
+HTEvent_setWinHandle	@ 2302
+HTEvent_getWinHandle	@ 2303
+HTEvent_winHandle	@ 2304
+HTEvent_setWinHandle	@ 2305
+HTEvent_getWinHandle	@ 2306
+HTEvent_registerTimeout	@ 2307
+HTEvent_unregisterTimeout @ 2308
+HTEvent_RegisterTTY	@ 2309
+HTEvent_UnRegisterTTY	@ 2310
+HTEvent_Register	@ 2311
+HTEvent_UnRegister	@ 2312
+HTEvent_Retrieve	@ 2313
+HTEvent_UnregisterAll	@ 2314
+HTEvent_stopLoop	@ 2315
+AsyncWindowProc		@ 2316
+HTEvent_Loop		@ 2317
+AsyncWindowProc		@ 2318
+HTEvent_Loop		@ 2319
+
+;HTFTP.c		@ 2400
+HTLoadFTP		@ 2401
+
+;HTFTPDir.c		@ 2500
+HTFTPDir_new		@ 2501
+
+;HTFWrite.c		@ 2600
+HTBlackHole		@ 2601
+HTBlackHoleConverter	@ 2602
+HTErrorStream		@ 2603
+HTThroughLine		@ 2604
+HTFWriter_new		@ 2605
+HTTmp_setRoot		@ 2606
+HTTmp_getRoot		@ 2607
+HTTmp_freeRoot		@ 2608
+HTSaveLocally		@ 2609
+HTSaveAndExecute	@ 2610
+HTSaveAndCallback	@ 2611
+
+;HTFile.c		@ 2700
+HTFile_setDirAccess	@ 2701
+HTFile_dirAccess	@ 2702
+HTFile_setDirReadme	@ 2703
+HTFile_dirReadme	@ 2704
+HTFileSaveStream	@ 2705
+HTLoadFile		@ 2706
+
+;HTFormat.c		@ 2800
+HTPresentation_add	@ 2801
+HTPresentation_deleteAll @ 2802
+HTConversion_add	@ 2803
+HTConversion_deleteAll	@ 2804
+HTEncoding_add		@ 2805
+HTEncoding_deleteAll	@ 2806
+HTLanguage_add		@ 2807
+HTLanguage_deleteAll	@ 2808
+HTCharset_add		@ 2809
+HTCharset_deleteAll	@ 2810
+HTFormat_setConversion	@ 2811
+HTFormat_conversion	@ 2812
+HTFormat_setEncoding	@ 2813
+HTFormat_encoding	@ 2814
+HTFormat_setLanguage	@ 2815
+HTFormat_language	@ 2816
+HTFormat_setCharset	@ 2817
+HTFormat_charset	@ 2818
+HTFormat_deleteAll	@ 2819
+HTRank			@ 2820
+HTStreamStack		@ 2821
+HTStackValue		@ 2822
+
+;HTGopher.c		@ 2900
+HTLoadGopher		@ 2901
+
+;HTGuess.c		@ 3000
+HTGuess_new		@ 3001
+
+;HTHeader.c		@ 3100
+HTParser_add		@ 3101
+HTParser_delete		@ 3102
+HTParser_deleteAll	@ 3103
+HTParser_find		@ 3104
+HTGenerator_add		@ 3105
+HTGenerator_delete	@ 3106
+HTGenerator_deleteAll	@ 3107
+HTHeader_setParser	@ 3108
+HTHeader_parser		@ 3109
+HTHeader_addParser	@ 3110
+HTHeader_deleteParser	@ 3111
+HTHeader_setGenerator	@ 3112
+HTHeader_generator	@ 3113
+HTHeader_addGenerator	@ 3114
+HTHeader_deleteGenerator @ 3115
+HTHeader_deleteAll	@ 3116
+
+;HTHist.c		@ 3200
+HTHistory_new		@ 3201
+HTHistory_delete	@ 3202
+HTHistory_record	@ 3203
+HTHistory_replace	@ 3204
+HTHistory_removeLast	@ 3205
+HTHistory_removeFrom	@ 3206
+HTHistory_count		@ 3207
+HTHistory_position	@ 3208
+HTHistory_recall	@ 3209
+HTHistory_find		@ 3210
+HTHistory_list		@ 3211
+HTHistory_canBacktrack	@ 3212
+HTHistory_backtrack	@ 3213
+HTHistory_back		@ 3214
+HTHistory_canForward	@ 3215
+HTHistory_forward	@ 3216
+
+;HTHome.c		@ 3300
+HTFindRelatedName	@ 3301
+HTHomeAnchor		@ 3302
+HTLoadStart		@ 3303
+HTLoadTerminate		@ 3304
+
+;HTIcons.c		@ 3400
+HTIcon_alt_string	@ 3401
+HTAddIcon		@ 3402
+HTAddHref		@ 3403
+HTAddUnknownIcon	@ 3404
+HTAddBlankIcon		@ 3405
+HTAddParentIcon		@ 3406
+HTAddDirIcon		@ 3407
+HTStdIconInit		@ 3408
+HTGetIcon		@ 3409
+HTGetHref		@ 3410
+
+;HTInit.c		@ 3500
+HTConverterInit		@ 3501
+HTPresenterInit		@ 3502
+HTFormatInit		@ 3503
+HTNetInit		@ 3504
+HTAlertInit		@ 3505
+HTAccessInit		@ 3506
+
+;HTList.c		@ 3600
+HTList_new		@ 3601
+HTList_delete		@ 3602
+HTList_addObject	@ 3603
+HTList_appendObject	@ 3604
+HTList_removeObject	@ 3605
+HTList_removeLastObject	@ 3606
+HTList_removeFirstObject @ 3607
+HTList_count		@ 3608
+HTList_indexOf		@ 3609
+HTList_objectAt		@ 3610
+HTList_removeObjectAt	@ 3611
+
+;HTLog.c		@ 3700
+HTLog_open		@ 3701
+HTLog_close		@ 3702
+HTLog_isOpen		@ 3703
+HTLog_add		@ 3704
+
+;HTMIME.c		@ 3800
+HTMIMEConvert		@ 3801
+HTMIMEHeader		@ 3802
+
+;HTMIMERq.c		@ 3900
+HTMIMERequest_new	@ 3901
+
+;HTML.c			@ 4000
+HTMLUseCharacterSet	@ 4001
+HTML_flush		@ 4002
+HTML_free		@ 4003
+HTMLToPlain		@ 4004
+HTMLToC			@ 4005
+HTMLPresent		@ 4006
+
+;HTMLGen.c		@ 4100
+HTMLGenerator		@ 4101
+HTPlainToHTML		@ 4102
+HTPlainTo7BitHTML	@ 4103
+
+;HTMLPDTD.c		@ 4200
+HTStartAnchor		@ 4201
+HTMLPutImg		@ 4202
+HTNextID		@ 4203
+
+;HTMemory.c		@ 4300
+HTMemoryCall_add	@ 4301
+HTMemoryCall_delete	@ 4302
+HTMemoryCall_deleteAll	@ 4303
+HTMemory_malloc		@ 4304
+HTMemory_calloc		@ 4305
+HTMemory_realloc	@ 4306
+HTMemory_free		@ 4307
+HTMemory_setExit	@ 4308
+HTMemory_exit		@ 4309
+HTMemory_outofmem	@ 4310
+
+;HTMethod.c		@ 4400
+HTMethod_enum		@ 4401
+HTMethod_name		@ 4402
+
+;HTMulti.c		@ 4500
+HTAddWelcome		@ 4501
+HTMulti			@ 4502
+
+;HTNDir.c		@ 4600
+HTNewsDir_setWidth	@ 4601
+HTNewsDir_new		@ 4602
+HTNewsDir_addElement	@ 4603
+HTNewsDir_free		@ 4604
+
+;HTNet.c		@ 4700
+HTNet_setMaxSocket	@ 4701
+HTNet_maxSocket		@ 4702
+HTNetCall_add		@ 4703
+HTNetCall_delete	@ 4704
+HTNetCall_deleteAll	@ 4705
+HTNetCall_execute	@ 4706
+HTNet_setBefore		@ 4707
+HTNet_before		@ 4708
+HTNet_callBefore	@ 4709
+HTNetCall_addBefore	@ 4710
+HTNet_setAfter		@ 4711
+HTNet_after		@ 4712
+HTNet_callAfter		@ 4713
+HTNetCall_addAfter	@ 4714
+HTNet_activeQueue	@ 4715
+HTNet_idle		@ 4716
+HTNet_isEmpty		@ 4717
+HTNet_pendingQueue	@ 4718
+HTNet_dup		@ 4719
+HTNet_priority		@ 4720
+HTNet_setPriority	@ 4721
+HTNet_new		@ 4722
+HTNet_newServer		@ 4723
+HTNet_newClient		@ 4724
+HTNet_delete		@ 4725
+HTNet_deleteAll		@ 4726
+HTNet_wait		@ 4727
+HTNet_kill		@ 4728
+HTNet_killAll		@ 4729
+HTNet_setSocket		@ 4730
+HTNet_socket		@ 4731
+
+;HTNetTxt.c		@ 4800
+HTNetToText		@ 4801
+HTTextToNet		@ 4802
+
+;HTNews.c		@ 4900
+HTNewsStatus_new	@ 4901
+HTNews_setMaxArticles	@ 4902
+HTNews_maxArticles	@ 4903
+HTNews_setHost		@ 4904
+HTNews_host		@ 4905
+HTFreeNewsHost		@ 4906
+HTLoadNews		@ 4907
+
+;HTNewsLs.c		@ 5000
+HTNewsList		@ 5001
+HTNewsGroup		@ 5002
+
+;HTNewsRq.c		@ 5100
+HTNewsPost_new		@ 5101
+
+;HTParse.c		@ 5200
+HTParse			@ 5201
+HTSimplify		@ 5202
+HTRelative		@ 5203
+HTCleanTelnetString	@ 5204
+
+;HTPlain.c		@ 5300
+HTPlainPresent		@ 5301
+
+;HTProt.c		@ 5400
+HTProtocol_add		@ 5401
+HTProtocol_delete	@ 5402
+HTProtocol_client	@ 5403
+HTProtocol_server	@ 5404
+HTProtocol_preemptive	@ 5405
+HTProtocol_deleteAll	@ 5406
+HTProtocol_find		@ 5407
+
+;HTProxy.c		@ 5500
+HTProxy_add		@ 5501
+HTProxy_deleteAll	@ 5502
+HTGateway_add		@ 5503
+HTGateway_deleteAll	@ 5504
+HTNoProxy_add		@ 5505
+HTNoProxy_deleteAll	@ 5506
+HTProxy_find		@ 5507
+HTGateway_find		@ 5508
+HTProxy_getEnvVar	@ 5509
+
+;HTReqMan.c		@ 5600
+HTRequest_new		@ 5601
+HTRequest_clear		@ 5602
+HTRequest_dup		@ 5603
+HTRequest_dupInternal	@ 5604
+HTRequest_delete	@ 5605
+HTRequest_setMethod	@ 5606
+HTRequest_method	@ 5607
+HTRequest_setReloadMode	@ 5608
+HTRequest_reloadMode	@ 5609
+HTRequest_setConversion	@ 5610
+HTRequest_conversion	@ 5611
+HTRequest_setEncoding	@ 5612
+HTRequest_encoding	@ 5613
+HTRequest_setLanguage	@ 5614
+HTRequest_language	@ 5615
+HTRequest_setCharset	@ 5616
+HTRequest_charset	@ 5617
+HTRequest_setGenerator	@ 5618
+HTRequest_generator	@ 5619
+HTRequest_setParser	@ 5620
+HTRequest_parser	@ 5621
+HTRequest_setGnHd	@ 5622
+HTRequest_addGnHd	@ 5623
+HTRequest_gnHd		@ 5624
+HTRequest_setRqHd	@ 5625
+HTRequest_addRqHd	@ 5626
+HTRequest_rqHd		@ 5627
+HTRequest_setRsHd	@ 5628
+HTRequest_addRsHd	@ 5629
+HTRequest_rsHd		@ 5630
+HTRequest_setEnHd	@ 5631
+HTRequest_addEnHd	@ 5632
+HTRequest_enHd		@ 5633
+HTRequest_setAnchor	@ 5634
+HTRequest_anchor	@ 5635
+HTRequest_setParent	@ 5636
+HTRequest_parent	@ 5637
+HTRequest_setOutputStream @ 5638
+HTRequest_outputStream	@ 5639
+HTRequest_setOutputFormat @ 5640
+HTRequest_outputFormat	@ 5641
+HTRequest_setDebugStream @ 5642
+HTRequest_debugStream	@ 5643
+HTRequest_setDebugFormat @ 5644
+HTRequest_debugFormat	@ 5645
+HTRequest_setCallback	@ 5646
+HTRequest_callback	@ 5647
+HTRequest_setProxying	@ 5648
+HTRequest_proxying	@ 5649
+HTRequest_setContext	@ 5650
+HTRequest_context	@ 5651
+HTRequest_setPreemptive	@ 5652
+HTRequest_preemptive	@ 5653
+HTRequest_setNegotiation @ 5654
+HTRequest_negotiation	@ 5655
+HTRequest_bytesRead	@ 5656
+HTRequest_bytesWritten	@ 5657
+HTRequest_kill		@ 5658
+HTRequest_error		@ 5659
+HTRequest_setError	@ 5660
+HTRequest_addError	@ 5661
+HTRequest_addSystemError @ 5662
+HTRequest_retryTime	@ 5663
+HTRequest_redirection	@ 5664
+HTRequest_setMaxRetry	@ 5665
+HTRequest_maxRetry	@ 5666
+HTRequest_retry		@ 5667
+HTRequest_setPriority	@ 5668
+HTRequest_priority	@ 5669
+HTRequest_setNet	@ 5670
+HTRequest_net		@ 5671
+HTRequest_addDestination @ 5672
+HTRequest_removeDestination @ 5673
+HTRequest_destinationsReady @ 5674
+HTRequest_linkDestination @ 5675
+HTRequest_unlinkDestination @ 5676
+HTRequest_removePostWeb	@ 5677
+HTRequest_killPostWeb	@ 5678
+HTLoad			@ 5679
+
+;HTRules.c		@ 5700
+HTRule_global		@ 5701
+HTRule_setGlobal	@ 5702
+HTRule_add		@ 5703
+HTRule_deleteAll	@ 5704
+HTRule_translate	@ 5705
+HTRule_parseLine	@ 5706
+HTRules			@ 5707
+
+;HTSocket.c		@ 5800
+HTInputSocket_new	@ 5801
+HTInputSocket_free	@ 5802
+HTSocketRead		@ 5803
+HTSocket_DLLHackFopen	@ 5804
+HTFileRead		@ 5805
+HTLoadSocket		@ 5806
+
+;HTString.c		@ 5900
+strcasecomp		@ 5901
+strncasecomp		@ 5902
+strcasestr		@ 5903
+HTSACopy		@ 5904
+HTSACat			@ 5905
+HTStrMatch		@ 5906
+HTStrCaseMatch		@ 5907
+HTStrip			@ 5908
+HTTrace_setCallback	@ 5909
+HTTrace_getCallback	@ 5910
+HTTrace			@ 5911
+
+;HTStyle.c		@ 6000
+HTStyleNew		@ 6001
+HTStyleNewNamed		@ 6002
+HTStyleFree		@ 6003
+
+;HTTCP.c		@ 6100
+HTErrnoString		@ 6101
+HTInetStatus		@ 6102
+HTCardinal		@ 6103
+HTSetSignal		@ 6104
+HTSetSignal		@ 6105
+HTInetString		@ 6106
+HTGetDomainName		@ 6107
+HTSetHostName		@ 6108
+HTGetHostName		@ 6109
+HTFreeHostName		@ 6110
+HTSetMailAddress	@ 6111
+HTGetMailAddress	@ 6112
+HTFreeMailAddress	@ 6113
+HTDoConnect		@ 6114
+HTDoAccept		@ 6115
+HTDoListen		@ 6116
+
+;HTTP.c			@ 6200
+HTTPStatus_new		@ 6201
+HTLoadHTTP		@ 6202
+
+;HTTPGen.c		@ 6300
+HTTPGen_new		@ 6301
+
+;HTTPReq.c		@ 6400
+HTTPRequest_new		@ 6401
+
+;HTTPRes.c		@ 6500
+HTTPResponse_new	@ 6501
+
+;HTTPServ.c		@ 6600
+HTServHTTP		@ 6601
+
+;HTTeXGen.c		@ 6700
+HTMLToTeX		@ 6701
+
+;HTTee.c		@ 6800
+HTTee			@ 6801
+
+;HTTelnet.c		@ 6900
+HTLoadTelnet		@ 6901
+
+;HTUU.c			@ 7000
+HTUU_encode		@ 7001
+HTUU_decode		@ 7002
+
+;HTWAIS.c		@ 7100
+HTLoadWAIS		@ 7101
+
+;HTWSRC.c		@ 7200
+HTWSRCConvert		@ 7201
+
+;HTWWWStr.c		@ 7300
+HTNextField		@ 7301
+HTMessageIdStr		@ 7302
+HTGetTimeZoneOffset	@ 7303
+HTParseTime		@ 7304
+HTDateTimeStr		@ 7305
+HTDateDirStr		@ 7306
+HTNumToStr		@ 7307
+HTWWWToLocal		@ 7308
+HTLocalToWWW		@ 7309
+
+;HTWriter.c		@ 7400
+HTWriter_new		@ 7401
+HTBufWriter_new		@ 7402
+HTASCIIWriter		@ 7403
+HTASCIIWriter		@ 7404
+
+;HTXParse.c		@ 7500
+HTXParse		@ 7501
+
+;SGML.c			@ 7600
+SGMLFindAttribute	@ 7601
+SGMLFindTag		@ 7602
+SGML_flush		@ 7603
+SGML_free		@ 7604
+SGML_abort		@ 7605
+SGML_callerData		@ 7606
+SGML_setCallerData	@ 7607
+SGML_callerData		@ 7608
+SGML_setCallerData	@ 7609
+SGML_character		@ 7610
+SGML_string		@ 7611
+SGML_write		@ 7612
+SGML_new		@ 7613
+

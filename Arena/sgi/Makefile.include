@@ -1,0 +1,42 @@
+#  Make library under sgi
+#
+
+# For W3 distribution, machine type for subdirectories
+WWW_MACH = sgi
+
+# The ASIS repository's name for the machine we are on
+#ASIS_MACH = sun-4/sunos-4.1.1
+
+# Options for cc 
+#CC = cc
+#CFLAGS = -DDEBUG
+#LFLAGS = -Bstatic
+
+# Options for gcc
+CC = gcc
+CFLAGS = -g -O -fwritable-strings
+# CFLAGS = -Wall -g -DXMOSAIC_HACK
+LFLAGS = -static
+
+# In both cases: Ask for static linking so that binary will be transportable
+
+# Directory for installed binary:
+# BINDIR = /usr/local/bin
+#BINDIR = ../../LineMode/sun4
+
+#_________________ OK if normal W3 distribution
+# Where is the WWW source root?
+WWW = ../..
+
+#  Where should temporary (object) files go?
+# WTMP = /usr/tmp
+WTMP = $(WWW)
+
+# Where is the W3 object library?
+#LIBDIR = $(WWW)/Library/Implementation/$(WWW_MACH)
+
+USELIBDIR = ../../Library/$(WWW_MACH)
+#XLIBDIR = -L/usr/local/lib
+XLIBDIR = -L/usr/lib
+OTHERLIB = -lm
+LIBRARYJPEG =	-L../../Image/jpeg/$(WWW_MACH) -ljpeg

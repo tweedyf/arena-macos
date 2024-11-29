@@ -1,0 +1,14 @@
+To get from zlib*.tar.gz to built library
+------------------------------------------
+0) Get archive
+
+From: ftp://ftp.uu.net/graphics/png/
+
+1) Extract archive
+	gnutar xvfpz zlib*.tar.gz
+	mv zlib Implementation
+
+2) Build
+	cd Implementation
+	make
+

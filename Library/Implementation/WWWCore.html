@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Declaration of W3C Reference Library CORE</TITLE>
+<!-- Changed by: Henrik Frystyk Nielsen, 20-Nov-1995 -->
+<NEXTID N="z11">
+</HEAD>
+<BODY>
+
+<H1>Declaration of W3C Reference Library CORE</H1>
+
+<PRE>
+/*
+**	(c) COPYRIGHT MIT 1995.
+**	Please first read the full copyright statement in the file COPYRIGH.
+*/
+</PRE>
+
+This is the basic include file for the core of the W3C Reference
+Library. Togrther with the <A HREF="WWWUtil.html">WWWUtil module</A>
+it contains all core specific modules which are required to compile
+and build the Library. <P>
+
+The core part of the Library is designed as a set of registration
+modules with no real functionality in itself. Instead all the
+functionality comes when the applciation registeres the modules that
+provides a desired functionaly, for example accessing HTTP servers or
+the local file system. The Library has a special include file called
+<A HREF="WWWApp.html">WWWApp.h</A> which contains all converters,
+protocol modules, and a lot of other "sugar" modules that can make the
+core a very powerful Web interface. You can include this one if the
+application is to use all the functionality of the Library.
+
+<PRE>
+#ifndef WWWCORE_H
+#define WWWCORE_H
+</PRE>
+
+<H2>System dependencies</H2>
+
+<PRE>
+#include "tcp.h"
+</PRE>
+
+<H2>Library Includes</H2>
+
+<PRE>
+#ifdef __cplusplus
+extern "C" { 
+#endif
+</PRE>
+
+<H2>Core Modules</H2>
+
+<PRE>
+#include "HTAccess.h"			/* Document access network code */
+#include "HTAlert.h"			/* User Messages and Dialogs */
+#include "HTAnchor.h"			/* Anchor class Definition */
+#include "HTBind.h"			/* Binding to file suffixes */
+#include "HTConLen.h"			/* Content Length Counter */
+#include "HTDNS.h"			/* Host name cache */
+#include "HTError.h"			/* Error manager */
+#include "HTEscape.h"			/* Escape and unescape URLs */
+#include "HTEvntrg.h"			/* Event manager */
+#include "HTFWrite.h"			/* Write to an ANSI file descriptor */
+#include "HTFormat.h"			/* Stream Stack and content neg. */
+#include "HTMethod.h"			/* Request methods like PUT, GET */
+#include "HTNet.h"			/* public part of Net Manager */
+#include "HTParse.h"			/* Parse URLs */
+#include "HTProt.h"			/* Protocol Manager */
+#include "HTReq.h"			/* public part of Request Manager */
+#include "HTSocket.h"			/* public part of Net Manager */
+#include "HTTCP.h"			/* GetXbyY functions */
+#include "HTTee.h"			/* T streem for splitting a stream */
+#include "HTWWWStr.h"			/* Web Related String Functions */
+#include "HTWriter.h"			/* Write to a unix file descriptor */
+</PRE>
+
+End of Core modules
+
+<PRE>
+#ifdef __cplusplus
+} /* end extern C definitions */
+#endif
+
+#endif
+</PRE>
+
+End of WWWCore API definition
+
+</BODY>
+</HTML>

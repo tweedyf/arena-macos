@@ -1,0 +1,207 @@
+
+ansi2knr.c,156
+#define isidchar(220,9913
+#define isidfirstchar(221,9963
+main(230,10135
+skipspace(285,11319
+writeblanks(305,11755
+test1(323,12206
+convert1(370,13445
+
+example.c,70
+int check_png(18,653
+void read_png(40,1034
+void write_png(230,6457
+
+png.c,243
+#define PNG_INTERNAL10,247
+#define PNG_NO_EXTERN11,268
+png_check_sig(96,3362
+png_zalloc(108,3560
+png_zfree(116,3770
+png_reset_crc(124,3997
+make_crc_table(145,4680
+update_crc(164,5117
+png_calculate_crc(192,5686
+png_info_init(198,5830
+
+pngerror.c,67
+#define PNG_INTERNAL13,461
+png_error(20,689
+png_warning(39,1245
+
+pngio.c,198
+#define PNG_INTERNAL13,453
+png_write_data(30,1250
+#define NEAR_BUF_SIZE 46,1659
+#define MIN(47,1686
+png_write_data(55,1784
+png_read_data(114,3681
+png_read_data(126,3921
+png_init_io(176,5310
+
+pngmem.c,262
+#define PNG_INTERNAL13,465
+#define NUM_SEG 38,1577
+typedef struct borland_seg_structborland_seg_struct39,1595
+} borland_seg;borland_seg45,1719
+png_large_malloc(56,1830
+png_large_free(193,5556
+png_malloc(253,6868
+png_realloc(278,7332
+png_free(305,7954
+
+pngrcb.c,333
+#define PNG_INTERNAL9,241
+png_read_IHDR(13,285
+png_read_PLTE(41,1150
+png_read_gAMA(54,1410
+png_read_sBIT(66,1626
+png_read_cHRM(79,1890
+png_read_tRNS(100,2401
+png_read_bKGD(122,2828
+png_read_hIST(135,3102
+png_read_pHYs(147,3322
+png_read_oFFs(162,3666
+png_read_tIME(177,4006
+png_read_zTXt(190,4267
+png_read_tEXt(228,5274
+
+pngread.c,261
+#define PNG_INTERNAL10,224
+png_read_init(15,343
+png_read_info(36,1056
+png_read_update_info(210,6166
+png_start_read_image(222,6596
+png_read_row(229,6712
+png_read_rows(429,13750
+png_read_image(466,14625
+png_read_end(488,15175
+png_read_destroy(614,18999
+
+pngrtran.c,755
+#define PNG_INTERNAL10,253
+png_set_background(16,391
+png_set_strip_16(32,933
+typedef struct dsort_structdsort_struct45,1360
+} dsort;dsort50,1457
+png_set_dither(53,1472
+png_set_gamma(431,13353
+png_set_expand(445,13766
+png_set_gray_to_rgb(453,13906
+png_init_read_transformations(462,14101
+png_read_transform_info(605,19003
+png_do_read_transformations(680,21456
+png_do_unpack(779,24839
+png_do_unshift(864,27175
+png_do_chop(958,29522
+png_do_read_filler(982,30080
+png_do_gray_to_rgb(1030,31424
+png_build_grayscale_palette(1120,34144
+png_correct_palette(1163,34920
+png_do_background(1333,40868
+png_do_gamma(2008,66815
+png_do_expand_palette(2166,71445
+png_do_expand(2302,75576
+png_do_dither(2488,81491
+png_build_gamma_table(2579,84490
+
+pngrutil.c,614
+#define PNG_INTERNAL10,238
+png_get_uint_32(15,325
+png_get_uint_16(29,595
+png_crc_read(41,782
+png_crc_skip(49,991
+png_handle_IHDR(67,1443
+png_handle_PLTE(157,4086
+png_handle_gAMA(184,4776
+png_handle_sBIT(210,5285
+png_handle_cHRM(245,6057
+png_handle_tRNS(296,7320
+png_handle_bKGD(350,8677
+png_handle_hIST(386,9616
+png_handle_pHYs(411,10153
+png_handle_oFFs(434,10616
+png_handle_tIME(457,11097
+png_handle_tEXt(484,11674
+png_handle_zTXt(508,12255
+png_combine_row(635,16036
+png_do_read_interlace(795,19801
+png_read_filter_row(948,24316
+png_read_finish_row(1053,26783
+png_read_start_row(1157,30045
+
+pngtest.c,40
+#define STDERR 18,411
+int main(31,643
+
+pngtrans.c,316
+#define PNG_INTERNAL11,283
+png_set_bgr(17,432
+png_set_swap(26,631
+png_set_packing(36,867
+png_set_shift(48,1116
+png_set_interlace_handling(57,1353
+png_set_filler(71,1613
+png_set_rgbx(83,1991
+png_set_xrgb(89,2087
+png_set_invert_mono(97,2269
+png_do_invert(104,2406
+png_do_swap(125,2875
+png_do_bgr(148,3351
+
+pngwrite.c,503
+#define PNG_INTERNAL11,281
+png_write_info(24,894
+png_write_end(115,4148
+png_convert_from_struct_tm(162,5578
+png_convert_from_time_t(173,5860
+png_write_init(184,6086
+png_write_rows(205,6818
+png_write_image(221,7220
+png_write_row(243,7822
+png_write_destroy(403,12673
+png_set_filtering(420,13263
+png_set_compression_level(427,13390
+png_set_compression_mem_level(434,13525
+png_set_compression_strategy(441,13680
+png_set_compression_window_bits(448,13830
+png_set_compression_method(455,13995
+
+pngwtran.c,139
+#define PNG_INTERNAL10,254
+png_do_write_transformations(16,403
+png_do_pack(52,1739
+png_do_shift(173,4717
+png_do_write_filler(300,8260
+
+pngwutil.c,782
+#define PNG_INTERNAL9,238
+png_save_uint_32(16,478
+png_save_uint_16(26,754
+png_write_uint_32(34,914
+png_write_uint_16(47,1222
+png_write_chunk(65,1952
+png_write_chunk_start(89,2734
+png_write_chunk_data(106,3371
+png_write_chunk_end(118,3685
+png_write_sig(126,3850
+png_write_IHDR(136,4155
+png_write_PLTE(224,6929
+png_write_IDAT(245,7409
+png_write_IEND(252,7571
+png_write_gAMA(260,7741
+png_write_sBIT(275,8101
+png_write_cHRM(306,8713
+png_write_tRNS(337,9809
+png_write_bKGD(367,10666
+png_write_hIST(394,11359
+png_write_tEXt(412,11780
+png_write_zTXt(432,12398
+png_write_pHYs(586,17721
+png_write_oFFs(603,18121
+png_write_tIME(621,18594
+png_write_start_row(638,18990
+png_write_finish_row(685,20529
+png_do_write_interlace(776,23353
+png_write_filter_row(927,27359

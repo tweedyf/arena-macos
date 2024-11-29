@@ -1,0 +1,48 @@
+<HTML><HEAD>
+<TITLE>Conformance and Performance Testing</TITLE>
+</HEAD><BODY><H1><A HREF="../../../"><IMG SRC="w3c_48x48.gif" ALT="W3C"></A>
+<A HREF="../../"><IMG SRC="Lib48x.gif"></A>
+<IMG SRC="Bug48x.gif" ALT="BUGS">
+</H1><H1>Conformance and Performance Testing
+</H1><P>One of the important design goals of the W3C Reference Library is
+that it must conform to the current specifications of the Web model, for
+example for HTTP. &nbsp;This page gives an overview of what tests we have
+available and what we are working on. We have divided the tests the following
+four categories:
+<DL><DT><B>Basic core test suite</B>
+
+<DD>In order to make sure that the basic parts of the Libray conforms to
+the current specifications, we have developed a set of basic tools.
+<DT><B>Stress and Regresion tests 
+</B>
+<DD>It is important to test the Library code under stress - that is - in
+an environment with limited
+resources. This can for example be the number of available socket descriptors,
+lack of virtual
+memory, disk space etc. We have a set of example applications that can serve
+to do the stress testing:
+
+<UL><LI><A HREF=/afs/w3.org/team/WWW/MiniServ/>Mini server and proxy</A>
+<LI><A HREF=/afs/w3.org/team/WWW/Robot/>Robot</A>
+<LI><A HREF=/afs/w3.org/team/WWW/ComLine/>Command line tool</A>
+<LI><A HREF=/afs/w3.org/team/WWW/LineMode/>Line mode browser</A>
+</UL><P>The test should also include testing of a well-known test base where
+we can perform regression tests
+on.
+
+<DT><B>Performance testing</B>
+<DD>Even though performance is not the most important factor in the W3C reference
+code, we need to
+be aware of the problem as demos only work in practice if they run reasonaly
+smooth. We have <A HREF="Prof_1.html">some first results</A> available and
+more will come.
+<DT><B>Platform dependent testing
+</B>
+<DD>We should select a small set of main platforms for tesing platform
+dependencies. In all other
+cases we should rely on external help for doing the test.
+</DL><P>
+<HR>
+<ADDRESS>Henrik Frystyk, <A HREF="mailto:libwww@w3.org">libwww@w3.org</A>,
+February 1996
+</ADDRESS></BODY></HTML>

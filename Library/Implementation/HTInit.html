@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+<TITLE>Initialization Routines</TITLE>
+<!-- Changed by: Henrik Frystyk Nielsen, 22-Jan-1996 -->
+</HEAD>
+<BODY>
+<H1>Initialization Module</H1>
+
+<PRE>
+/*
+**	(c) COPYRIGHT MIT 1995.
+**	Please first read the full copyright statement in the file COPYRIGH.
+*/
+</PRE>
+
+This module resisters all the plug &amp; play software modules which
+will be used in the program on client side (The server has it's own
+initialization module). None of the functions in this module are
+called from the Library. They are uniquely a help for the application
+programmer in order to set up the functionality of the Library. <P>
+
+The initialization consists of definiting the following bindings:
+
+<UL>
+<LI>Between a source media type and a dest media type (conversion)
+<LI>Between media types and external viewers/presenters
+<LI>Between an access method and a protocol module
+</UL>
+
+This module is implemented by <A HREF="HTInit.c">HTInit.c</A>, and it
+is a part of the <A HREF="http://www.w3.org/pub/WWW/Library/"> W3C
+Reference Library</A>. <P>
+
+<IMG SRC="../../Icons/32x32/warning.gif"> <B>THE APPLICATION MAY USE
+THESE FUNCTIONS BUT IT IS NOT REQUIRED</B> <P>
+
+<IMG SRC="../../Icons/32x32/warning.gif"> <B>PLEASE SEE THE <A
+HREF="HTBInit.html">HTBInit MODULE</A> FOR STANDARD BINDINGS BETWEEN
+FILE EXTENSIONS AND MEDIA TYPES.</B>
+
+<PRE>
+#ifndef HTINIT_H
+#define HTINIT_H
+#include "WWWLib.h"
+</PRE>
+
+<H2>Media Type Conversions</H2>
+
+The <EM>Converters</EM> are used to convert a media type to another
+media type, or to present it on screen. This is a part of the stream
+stack algorithm. The Presenters are also used in the stream stack, but
+are initialized separately.
+
+<PRE>
+#include "HTML.h"			/* Uses HTML/HText interface */
+#include "HTPlain.h"			/* Uses HTML/HText interface */
+
+#include "HTTeXGen.h"
+#include "HTMLGen.h"
+#include "HTMIME.h"
+#include "HTBound.h"
+#include "HTGuess.h"
+#include "HTRules.h"
+#include "HTWSRC.h"
+#include "HTFWrite.h"
+#include "HTNewsLs.h"
+
+extern void HTConverterInit	(HTList * conversions);
+</PRE>
+
+<H2>Presenters</H2>
+
+The <EM>Presenters</EM> are used to present a media type to the use by
+calling an external program, for example a post script viewer. This is
+a part of the stream stack algorithm. The Converters are also used in
+the stream stack, but are initialized separately.
+
+<PRE>
+extern void HTPresenterInit	(HTList * conversions);
+</PRE>
+
+<H2>Converters and Presenters</H2>
+
+This function is only defined in order to preserve backward
+compatibility.
+
+<PRE>
+extern void HTFormatInit	(HTList * conversions);
+</PRE>
+
+<H2>Protocol Modules</H2>
+
+Set up default bindings between access schemes and the set of protocol
+modules in the Library.
+
+<PRE>
+#include "HTIcons.h"
+#include "WWWHTTP.h"
+#include "HTFile.h"
+#include "HTFTP.h"
+#include "HTGopher.h"
+#include "HTTelnet.h"
+#include "HTNews.h"
+
+#ifdef HT_DIRECT_WAIS
+#include "HTWAIS.h"
+#endif
+
+extern void HTAccessInit (void);
+</PRE>
+
+<H2>File Suffix Setup</H2>
+
+This functions defines a basic set of file suffixes and the
+corresponding media types.
+
+<PRE>
+extern void HTFileInit (void);
+</PRE>
+
+<H2>Register Callbacks For the NET manager</H2>
+
+We register two often used callback functions: a BEFORE and a AFTER
+callback Not done automaticly - may be done by application!
+
+<PRE>
+#include "HTHome.h"
+
+extern void HTNetInit (void);
+</PRE>
+
+<H2>Register Callbacks for the ALERT Manager</H2>
+
+We register a set of alert messages Not done automaticly - may be done
+by application!
+
+<PRE>
+#include "HTDialog.h"
+
+extern void HTAlertInit (void);
+</PRE>
+
+<PRE>
+#endif
+</PRE>
+
+End of HTInit Module.
+</BODY>
+</HTML>
+

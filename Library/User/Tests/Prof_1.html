@@ -1,0 +1,237 @@
+<HTML><HEAD>
+<TITLE>Conformance and Performance Testing</TITLE>
+</HEAD><BODY><H1><A HREF="../../../"><IMG SRC="w3c_48x48.gif" ALT="W3C"></A>
+<A HREF="../../"><IMG SRC="Lib48x.gif"></A>
+<IMG SRC="Bug48x.gif" ALT="BUGS">
+</H1><H1>Conformance and Performance Testing
+</H1><P>One of the important design goals of the W3C Reference Library is
+that it must conform to the current specifications of the Web model, for
+example for HTTP. &nbsp;This page gives an overview of what tests we have
+available and what we are working on. We have divided the tests the following
+four categories:
+<DL><DT><B>Basic core test suite</B>
+
+<DD>In order to make sure that the basic parts of the Libray conforms to
+the current specifications, we have developed a set of basic tools.
+<DT><B>Stress and Regresion tests 
+</B>
+<DD>It is important to test the Library code under stress - that is - in
+an environment with limited
+resources. This can for example be the number of available socket descriptors,
+lack of virtual
+memory, disk space etc. We have a set of example applications that can serve
+to do the stress testing:
+
+<UL><LI><A HREF=/afs/w3.org/team/WWW/MiniServ/>Mini server and proxy</A>
+<LI><A HREF=/afs/w3.org/team/WWW/Robot/>Robot</A>
+<LI><A HREF=/afs/w3.org/team/WWW/ComLine/>Command line tool</A>
+<LI><A HREF=/afs/w3.org/team/WWW/LineMode/>Line mode browser</A>
+</UL><P>The test should also include testing of a well-known test base where
+we can perform regression tests
+on.
+
+<DT><B>Performance testing</B>
+<DD>Even though performance is not the most important factor in the W3C reference
+code, we need to
+be aware of the problem as demos only work in practice if they run reasonaly
+smooth. We have some first results available and more will come.
+<DT><B>Platform dependent testing
+</B>
+<DD>We should select a small set of main platforms for tesing platform
+dependencies. In all other
+cases we should rely on external help for doing the test.
+</DL><P>
+Performance Testing
+<P>-------------------
+<P>
+<P>The test run contained GET methods in first generation (181 requests)
+and HEAD 
+<P>(121 requests) methods in second generation links from this page. The
+total 
+<P>amount of requests issued was 302. The results are shown below with the
+robot 
+<P>running on www23 (solaris 2.4)
+<P>
+<P>Without proxy:
+<P>
+<P>Robot started on Sat, 10 Feb 1996 15:48:46
+<P>Robot terminated Sat, 10 Feb 1996 15:49:27
+<P>total: 41 sec (7.3 request/sec)
+<P>
+<P>With mini proxy running on www20 (solaris 2.3):
+<P>
+<P>Robot started on Sat, 10 Feb 1996 16:13:54
+<P>Robot terminated Sat, 10 Feb 1996 16:14:36
+<P>total: 42 sec which gives a proxy overhead of 1 sec or 2.4%
+<P>
+<P>With CERN proxy and a minimum configuration on www20:
+<P>
+<P>Robot started on Sat, 10 Feb 1996 16:18:48
+<P>Robot terminated Sat, 10 Feb 1996 16:20:00
+<P>run 1: total: 72 sec which gives a proxy overhead of 31 sec or 75.6%
+<P>run 2: total: 71 sec which gives a proxy overhead of 30 sec or 73.1%
+<P>
+<P>With mini proxy running on zorch (alpha):
+<P>
+<P>Robot started on Sat, 10 Feb 1996 15:52:25
+<P>Robot terminated Sat, 10 Feb 1996 15:53:06
+<P>total: 41 sec which gives a proxy overhead of 0 sec ???
+<P>
+<P>This of course doesn't show a lot as we need more statistics in order
+to take 
+<P>the variance into account. However, the purpose was to get a grib on if
+it 
+<P>made sense for me to continue working on integrating ILU into libwww for
+
+<P>making a testbed for HTTP-NG. I think this looks promising and I have
+done 
+<P>some first attempts on the merging of ILU and libwww but don't have any
+
+<P>results yet.
+<P>
+<P>Robot Profiling
+<P>---------------
+<P>
+<P>It's is interesting to see that more than 66% of all cycles are used in
+the 
+<P>SGML/HTML parser alone, and that doesn't include any presentation - only
+
+<P>parsing. The Event loop does not seem to be a problem even though it consumes
+
+<P>a lot of cycles on context swapping and the select call itself. Also,
+our new 
+<P>dynamic memory handler does not provide significant overhead. There is
+some 
+<P>information about the memory handler at
+<P>
+<P>	http://www.w3.org/devel/WWW/Library/User/Using/Memory.html
+<P>
+<P>----------------------------------------------------------------------------
+<P>*  -p[rocedures] using basic-block counts;                           
+     *
+<P>*  sorted in descending order by the number of cycles executed in each
+    *
+<P>*  procedure; unexecuted procedures are excluded                     
+     *
+<P>----------------------------------------------------------------------------
+<P>
+<P>95982832 cycles
+<P>
+<P>    cycles %cycles  cum %     cycles  bytes procedure (file)
+<P>                               /call  /line
+<P>
+<P>  21668317   22.58  22.58         57     28 SGML_character 
+<P>(../../Library/Implementation/SGML.c)
+<P>  16048691   16.72  39.30      26267     31 HTPlain_write 
+<P>(../../Library/Implementation/HTPlain.c)
+<P>  12562990   13.09  52.38         42     25 HTML_put_character 
+<P>(../../Library/Implementation/HTML.c)
+<P>   7138056    7.44  59.82          6     24 HText_appendCharacter 
+<P>(../../Robot/Implementation/HTRobot.c)
+<P>   6506182    6.78  66.60      18859     30 SGML_write 
+<P>(../../Library/Implementation/SGML.c)
+<P>   4317494    4.50  71.10        501     19 scan
+(../../Library/Implementation/
+<P>HTParse.c)
+<P>   3848148    4.01  75.11         83     56 strcasecomp 
+<P>(../../Library/Implementation/HTString.c)
+<P>   2613979    2.72  77.83        307     33 HTAtom_for 
+<P>(../../Library/Implementation/HTAtom.c)
+<P>   2115564    2.20  80.03         38     35 HTChunk_putc 
+<P>(../../Library/Implementation/HTChunk.c)
+<P>   1478274    1.54  81.57    1478274     26 HTEvent_Loop 
+<P>(../../Library/Implementation/HTEvntrg.c)
+<P>   1401192    1.46  83.03        207     32 SGMLFindTag 
+<P>(../../Library/Implementation/SGML.c)
+<P>   1367270    1.42  84.46       1435     30 HTAnchor_findAddress 
+<P>(../../Library/Implementation/HTAnchor.c)
+<P>   1324508    1.38  85.84       1374     29 HTMIME_put_block 
+<P>(../../Library/Implementation/HTMIME.c)
+<P>    889459    0.93  86.77         43     29 HTSACopy 
+<P>(../../Library/Implementation/HTString.c)
+<P>    822996    0.86  87.62         20     24 HTMemory_free 
+<P>(../../Library/Implementation/HTMemory.c)
+<P>    782508    0.82  88.44        867     43 HTSimplify 
+<P>(../../Library/Implementation/HTParse.c)
+<P>    759660    0.79  89.23       4063     26 parseheader 
+<P>(../../Library/Implementation/HTMIME.c)
+<P>    677414    0.71  89.94        157     21 HTParse 
+<P>(../../Library/Implementation/HTParse.c)
+<P>    645633    0.67  90.61         23     30 HTMemory_malloc 
+<P>(../../Library/Implementation/HTMemory.c)
+<P>    629904    0.66  91.26         56     37 wild_match 
+<P>(../../Library/Implementation/HTFormat.c)
+<P>
+<P>Server Profiling
+<P>----------------
+<P>
+<P>The server does not include the SGML/HTML parser at all and hence the
+
+<P>profiling test looks very different. Here the event loop takes a significant
+
+<P>amount of time, the reason beeing that the event loop is optimized for
+user 
+<P>applications and not server applications. The solution is to provide multiple
+
+<P>event loops that are optimized for various purposes. Not surprising, a
+
+<P>considerable part of the time is spent in the MIME parser.
+<P>
+<P>----------------------------------------------------------------------------
+<P>*  -p[rocedures] using basic-block counts;                           
+     *
+<P>*  sorted in descending order by the number of cycles executed in each
+    *
+<P>*  procedure; unexecuted procedures are excluded                     
+     *
+<P>----------------------------------------------------------------------------
+<P>
+<P>7059122 cycles
+<P>
+<P>    cycles %cycles  cum %     cycles  bytes procedure (file)
+<P>                               /call  /line
+<P>
+<P>   1385301   19.62  19.62    1385301     26 HTEvent_Loop 
+<P>(../../Library/Implementation/HTEvntrg.c)
+<P>    734278   10.40  30.03        458     19 scan
+(../../Library/Implementation/
+<P>HTParse.c)
+<P>    725385   10.28  40.30       4267     29 HTMIME_put_block 
+<P>(../../Library/Implementation/HTMIME.c)
+<P>    357407    5.06  45.37        303     33 HTAtom_for 
+<P>(../../Library/Implementation/HTAtom.c)
+<P>    290905    4.12  49.49        787     46 HTNextField 
+<P>(../../Library/Implementation/HTWWWStr.c)
+<P>    258050    3.66  53.14        255     31 __ProcessFds 
+<P>(../../Library/Implementation/HTEvntrg.c)
+<P>    188749    2.67  55.82       1869     26 parseheader 
+<P>(../../Library/Implementation/HTMIME.c)
+<P>    172651    2.45  58.26         19     24 HTMemory_free 
+<P>(../../Library/Implementation/HTMemory.c)
+<P>    166670    2.36  60.62       1651     30 HTAnchor_findAddress 
+<P>(../../Library/Implementation/HTAnchor.c)
+<P>    161866    2.29  62.92        111     56 strcasecomp 
+<P>(../../Library/Implementation/HTString.c)
+<P>    142504    2.02  64.93         44     29 HTSACopy 
+<P>(../../Library/Implementation/HTString.c)
+<P>    119604    1.69  66.63        704     26 HTTPReceive_put_block 
+<P>(../../Library/Implementation/HTTPServ.c)
+<P>    112702    1.60  68.22        141     21 HTParse 
+<P>(../../Library/Implementation/HTParse.c)
+<P>    111908    1.59  69.81        277     55 strncasecomp 
+<P>(../../Library/Implementation/HTString.c)
+<P>    103960    1.47  71.28         23     30 HTMemory_malloc 
+<P>(../../Library/Implementation/HTMemory.c)
+<P>     95455    1.35  72.64         95     24 HTSocketRead 
+<P>(../../Library/Implementation/HTSocket.c)
+<P>     89520    1.27  73.90         48     29 HTAlertCall_find 
+<P>(../../Library/Implementation/HTAlert.c)
+<P>     88258    1.25  75.15        874     43 HTSimplify 
+<P>(../../Library/Implementation/HTParse.c)
+<P>     86423    1.22  76.38         95     35 HTEvent_Register 
+<P>(../../Library/Implementation/HTEvntrg.c)
+<P>     85162    1.21  77.58         52     28 buf_put_block 
+<P>(../../Library/Implementation/HTConLen.c)
+<P>
+<P>
+</BODY></HTML>

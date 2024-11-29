@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<TITLE>HTTP Access</TITLE>
+<!-- Changed by: Henrik Frystyk Nielsen, 30-Jan-1996 -->
+</HEAD>
+<BODY>
+
+<H1>Multi Threaded HyperText Tranfer Protocol Module</H1>
+
+<PRE>
+/*
+**	(c) COPYRIGHT MIT 1995.
+**	Please first read the full copyright statement in the file COPYRIGH.
+*/
+</PRE>
+
+This is actually a very small definition file as almost everything is
+set up elsewhere. <P>
+
+This module is implemented by <A HREF="HTTP.c">HTTP.c</A>, and it is a
+part of the <A HREF="http://www.w3.org/pub/WWW/Library/">W3C Reference
+Library</A>. <P>
+
+<PRE>
+#ifndef HTTP_H
+#define HTTP_H
+
+#include "HTEvntrg.h"
+#include "HTStream.h"
+#include "HTFormat.h"
+
+extern HTEventCallback HTLoadHTTP;
+extern HTConverter HTTPStatus_new;
+
+#endif /* HTTP_H */
+</PRE>
+
+End of HTTP module declaration
+</BODY>
+</HTML>
+

@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<TITLE>The Generic Stream Class Definition</TITLE>
+<!-- Changed by: Henrik Frystyk Nielsen,  7-Nov-1995 -->
+</HEAD>
+<BODY>
+
+<H1>Stream Object definition</H1>
+
+<PRE>
+/*
+**	(c) COPYRIGHT MIT 1995.
+**	Please first read the full copyright statement in the file COPYRIGH.
+*/
+</PRE>
+
+A Stream object is something which accepts a stream of text. See also
+the <A HREF="HTStruct.html">Structured stream
+definition.</A>. Generally streams are cascaded into stream pipes
+where the output of a stream is directed into the input of the down
+stream object. However, it is not required that a stream has a target,
+it might as well be a black hole that just swallows data. <P>
+
+The creation methods will vary on the type of Stream Object.  All
+creation methods return a pointer to the stream object below.<P>
+
+This module is a part of the <A
+HREF="http://www.w3.org/pub/WWW/Library/">
+W3C Reference Library</A>.
+
+<B>NOTE: </B>All methods in the stream definition do now return an
+integer. The general return codes from the methods are:
+
+<UL>
+<LI><B>HT_WOULD_BLOCK</B>
+<LI><B>HT_ERROR</B>
+<LI><B>HT_OK</B>
+<LI><B>&gt;0</B> - any return greater than 0 will result in that the
+return code will be parsed on from the <A
+HREF="HTSocket.html#Read">HTSocketRead</A>. This can be used by
+inidividual stream to introduce their own return codes.
+</UL>
+
+As streams now have a return value, it is <B>very</B> important that
+these return values are passed upstream to all the other streams in
+the stream pipe. <P>
+
+It is not relevant to return how much data has been written in the
+stream, as there often will be a relationship other than 1:1 between
+indata and outdata. However, it is important that a stream keeps state
+(eitheron the indata or the outdata) so that it can accept a
+HT_WOULD_BLOCK and continue at a later time when the blocking
+situation has stopped.
+
+<PRE>
+#ifndef HTSTREAM_H
+#define HTSTREAM_H
+
+#include "HTList.h"
+
+typedef struct _HTStream HTStream;
+
+typedef struct _HTStreamClass {
+
+    char * name;
+</PRE>
+
+This field is for diagnostics only
+		
+<PRE>
+    int (*flush)	(HTStream * me);
+</PRE>
+
+The <CODE>flush</CODE> method is introduced in order to allow the
+stream to put any buffered data down the stream pipe but without
+taking the stream pipe down. It is for the stream to decide whether it
+has buffered data or not. In some situations, the stream might not
+want to send buffered data down the target as the date might be
+relevant for this stream only.
+
+<PRE>
+    int (*_free)	(HTStream * me);
+</PRE>
+
+The <CODE>free</CODE> method is like the <CODE>flush</CODE> method but
+it also frees the current stream object and all stream objects down
+stream. When the <CODE>free</CODE> method has been called, the
+<EM>whole</EM> stream pipe (not only this obejct) should not accept
+any more data.
+
+<PRE>
+    int (*abort)	(HTStream * me, HTList * errorlist);
+</PRE>
+
+The <CODE>abort</CODE> method should only be used if a stream is
+interrupted, for example by the user, or an error occurs.
+
+<PRE>
+    int (*put_character)(HTStream * me, char ch);
+				
+    int (*put_string)	(HTStream * me, CONST char * str);
+
+    int (*put_block)	(HTStream * me, CONST char * str, int len);
+</PRE>
+
+These methods are for actually putting data down the stream. It is
+important that the most efficient method is chosen (often
+put_block). There is no guarantee that a stream won't change method,
+for example from <CODE>put_character</CODE> to <CODE>put_block</CODE>
+
+<PRE>
+} HTStreamClass;
+
+#endif /* HTSTREAM_H */
+
+</PRE>
+
+End of HTStream definition
+</BODY>
+</HTML>

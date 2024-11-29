@@ -1,0 +1,223 @@
+<HTML>
+<HEAD>
+<TITLE>Generic Network Communication</TITLE>
+<!-- Changed by: Henrik Frystyk Nielsen,  3-Dec-1995 -->
+</HEAD>
+<BODY>
+
+<H1>Generic Network Communication</H1>
+
+<PRE>
+/*
+**	(c) COPYRIGHT MIT 1995.
+**	Please first read the full copyright statement in the file COPYRIGH.
+*/
+</PRE>
+
+This module has the common code for handling TCP/IP and DECnet connections
+etc. The main topics of functions in this module are:
+
+<UL>
+<LI><A HREF="#ConEst">Connection establishment</A>
+<LI><A HREF="#hostcache">Cache of host names</A>
+<LI><A HREF="#errormsg">Errno Messages</A>
+<LI><A HREF="#DNS">Host and mail addresses</A>
+<LI><A HREF="#Signals">Signal Handling</A>
+</UL>
+
+This module is implemented by <A HREF="HTTCP.c">HTTCP.c</A>, and it is
+a part of the <A HREF="http://www.w3.org/pub/WWW/Library/"> W3C
+Reference Library</A>.
+
+<PRE>
+#ifndef HTTCP_H
+#define HTTCP_H
+#include "HTReq.h"
+#include "HTNet.h"
+</PRE>
+
+<A NAME="ConEst"><H2>Connection Management</H2></A>
+
+All connections are established through the following functions.
+
+<H3>Active Connection Establishment</H3>
+
+This makes an active connect to the specified host. The <A
+HREF="HTReq.html#HTNet">HTNet structure</A> is parsed in
+order to handle errors. Default port might be overwritten by any port
+indication in the <A
+HREF="http://www.w3.org/pub/WWW/Addressing/URL/Overview.html">URL</A>
+specified as &lt;host&gt;:&lt;port&gt; If it is a multihomed host then
+HTDoConnect measures the time to do the connection and updates the
+calculated weights in the cache of visited hosts.
+
+<PRE>
+extern int HTDoConnect (HTNet * net, char * url, u_short default_port);
+</PRE>
+
+<H3>Passive Connection Establishment</H3>
+
+This function makes a non-blocking accept on a port. The net must
+contain a valid socket to accept on. If accept is OK then the socket
+descripter in the Net object is swapped to the new one.
+
+<PRE>
+extern int HTDoAccept (HTNet * net);
+</PRE>
+
+<H3>Listen on a Socket</H3>
+
+Listens on the specified port. 0 means that we don't care and a
+temporary one will be assigned. If <CODE>master</CODE>==INVSOC then we
+listen on all local interfaces (using a wildcard). If !INVSOC then use
+this as the local interface. <CODE>backlog</CODE> is the number of
+connections that can be queued on the socket - you can use
+<CODE>HT_BACKLOG</CODE> for a platform dependent value (typically 5 on
+BSD and 32 on SVR4). Returns HT_ERROR or HT_OK.
+
+<PRE>
+extern int HTDoListen (HTNet * net, u_short port, SOCKET master, int backlog);
+</PRE>
+
+<A NAME="errormsg"><H2>System Description of Error Message</H2></A>
+
+Return error message corresponding to errno number given. We need to
+pass the error number as a parameter as we on some platforms get
+different codes from sockets and local file access.
+
+<PRE>
+extern CONST char * HTErrnoString	(int errnum);
+extern int HTInetStatus			(int errnum, char * where);
+</PRE>
+
+<H3>Parse a Cardinal Value</H3>
+
+<PRE>
+/*	Parse a cardinal value				       parse_cardinal()
+**	----------------------
+**
+** On entry:
+** 	*pp points to first character to be interpreted, terminated by
+** 	non 0..9 character.
+** 	*pstatus points to status already valid,
+** 	maxvalue gives the largest allowable value.
+**
+** On exit:
+** 	*pp points to first unread character,
+** 	*pstatus points to status updated iff bad
+*/
+
+extern unsigned int HTCardinal (int *		pstatus,
+				char **		pp,
+				unsigned int	max_value);
+</PRE>
+
+<A NAME="DNS"><H2>Internet Name Server Functions</H2></A>
+
+The following functions are available to get information about a
+specified host.
+
+<H3>Produce a string for an internet address</H3>
+
+This function is equivalent to the BSD system call <B>inet_ntoa</B> in that it
+converts a numeric 32-bit IP-address to a dotted-notation decimal string. The
+pointer returned points to static memory which must be copied if it is to be
+kept.
+
+<PRE>
+extern CONST char * HTInetString (struct sockaddr_in * sin);
+</PRE>
+
+<A NAME="HTGetHostName"><H3>Get Name of This Machine</H3></A>
+
+This function returns a CONET char pointer to a static location containing
+the name of this host or NULL if not available.
+
+<PRE>
+extern CONST char * HTGetHostName (void);
+</PRE>
+
+
+<H3>Set Name of This Machine</H3>
+
+This function overwrites any other value of current host name. This might
+be set by the user to change the value in the ID value parsed to a news host
+when posting. The change doesn't influence the <A HREF="HTTCP.html#Mailaddress">Mail Address</A> as they are stored in two different locations. If, however,
+the change is done before the first call to HTGetMailAddress() then this 
+function will use the new host and domain name.
+
+<PRE>
+extern void HTSetHostName (char * host);
+</PRE>
+
+<H3>Cleanup Memory</H3>
+
+Called from <A HREF="HTReq.html#Library">HTLibTerminate</A>
+
+<PRE>
+extern void HTFreeHostName (void);
+</PRE>
+
+<H3>Get Domain Name of This Machine</H3>
+
+This function rerturns the domain name part of the host name as returned by
+HTGetHostName() function. Changing the domain name requires a call to 
+HTSetHostname().
+
+<PRE>
+extern CONST char *HTGetDomainName (void);
+</PRE>
+
+
+<A NAME="Mailaddress"><H3>Get User Mail Address</H3></A>
+
+This functions returns a char pointer to a static location containing the
+mail address of the current user. The static location is different from the
+one of the current host name so different values can be assigned. The default
+value is &lt;USER&gt;@hostname where hostname is as returned by HTGetHostName().
+
+<PRE>
+extern CONST char * HTGetMailAddress (void);
+</PRE>
+
+
+<H3>Set User Mail Address</H3>
+
+This function overwrites any other value of current mail address. This might
+be set by the user to change the value in the  <A HREF="http://www.w3.org/pub/WWW/Protocols/HTTP/HTRQ_Headers.html#from">From field</A> in the <A HREF="http://www.w3.org/pub/WWW/Protocols/HTTP/HTTP2.html">HTTP Protocol</A>.
+
+<PRE>
+extern void HTSetMailAddress (char * address);
+</PRE>
+
+<H3>Free Memory</H3>
+
+Called by <A HREF="HTReq.html#Library">HTLibTerminate</A>
+
+<PRE>
+extern void HTFreeMailAddress (void);
+</PRE>
+
+<H2>Signal Handling</H2>
+
+This is only necessary to compile on a few platforms and only if the
+application does not have its own signal handling. It is required on
+Solaris 2.3 (and other SVR4 platforms?) due to a bug in the TCP
+kernel. When a <CODE>connect()</CODE> is tried to a illegal port,
+solaris gives a SIGPIPE signal instead of returning <EM>Connection
+refused</EM>.
+
+<PRE>
+#ifdef WWWLIB_SIG
+extern void HTSetSignal (void);
+#endif
+
+#endif   /* HTTCP_H */
+</PRE>
+
+End of file
+</BODY>
+</HTML>
+
+
+
