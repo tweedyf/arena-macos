@@ -7,6 +7,8 @@
 **      Now 13 95	Spwaned from HTString.c
 */
 
+#include <time.h>
+
 /* Library include files */
 #include "tcp.h"
 #include "HTUtils.h"
