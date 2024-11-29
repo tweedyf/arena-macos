@@ -18,7 +18,7 @@ OBJS = adler32.o compress.o crc32.o gzio.o uncompr.o deflate.o trees.o \
 
 TEST_OBJS = example.o minigzip.o
 
-all: example minigzip
+all: libz.a
 
 test: all
 	./example
