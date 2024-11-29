@@ -62,9 +62,9 @@ OE = $(OBJ)/.created
 
 WWWLIB = -L$(USELIBDIR) -lwww
 XLIB = -L$(XLIBDIR) -lX11
-JPEGLIB = $(JPEGDIR)/$(WWW_MACH)/libjpeg.a
-PNGLIB = $(PNGDIR)/$(WWW_MACH)/libpng.a
-ZLIB = $(ZLIBDIR)/$(WWW_MACH)/libz.a
+JPEGLIB = $(JPEGDIR)/Implementation/libjpeg.a
+PNGLIB = $(PNGDIR)/Implementation/libpng.a
+ZLIB = $(ZLIBDIR)/Implementation/libz.a
 
 OBJS = $(OBJ)/www.o $(OBJ)/display.o \
   $(OBJ)/scrollbar.o $(OBJ)/toolbar.o $(OBJ)/entities.o $(OBJ)/forms.o \
