@@ -9,7 +9,7 @@ LFLAGS =
 CC = cc
 
 # Directory for installed binary:
-BINDIR = /usr/local/bin
+BINDIR = /usr/arena/bin
 
 # Where is the W3 object library to be installed (not normally done)?
 LIBDIR = $(WWW)/Library/Implementation/$(WWW_MACH)
