@@ -5,7 +5,7 @@
 WWW_MACH = linux
 
 # The ASIS repository's name for the machine we are on
-ASIS_MACH = sun-4/sunos-4.1.1
+ASIS_MACH = linux/x86_64
 
 # Options for cc 
 #CC = cc
@@ -23,7 +23,7 @@ LFLAGS = -static
 
 # Directory for installed binary:
 # BINDIR = /usr/local/bin
-BINDIR = ../../LineMode/sun4
+BINDIR = /usr/arena/bin
 
 #_________________ OK if normal W3 distribution
 # Where is the WWW source root?
