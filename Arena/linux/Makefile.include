@@ -38,4 +38,4 @@ WTMP = $(WWW)
 
 USELIBDIR = ../../Library/$(WWW_MACH)
 XLIBDIR = /usr/X11/lib
-OTHERLIB = -lm -lxcb
+OTHERLIB = -lm -lxcb -lXau
