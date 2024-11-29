@@ -4,7 +4,7 @@
 # For W3 distribution, machine type for subdirectories
 WWW_MACH = linux
 
-CFLAGS = -g -Wall -DPOSIXWAIT
+CFLAGS = -g -Wall -DPOSIXWAIT -DNO_TIMEZONE
 LFLAGS =
 CC = cc
 
