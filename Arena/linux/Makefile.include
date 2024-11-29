@@ -19,6 +19,10 @@ CFLAGS = -O -g
 # CFLAGS = -Wall -g
 LFLAGS = -static
 
+ifeq ($(shell uname -m),x86_64)
+CFLAGS += -DPOINTER_IS_64BIT
+endif
+
 # In both cases: Ask for static linking so that binary will be transportable
 
 # Directory for installed binary:
