@@ -18,6 +18,7 @@
 #include "HTUtils.h"
 #include "HTString.h"
 #include "HTChunk.h"
+#include "HTStruct.h"
 #include "SGML.h"
 
 #define INVALID (-1)
