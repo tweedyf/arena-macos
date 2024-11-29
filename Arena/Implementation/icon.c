@@ -43,7 +43,7 @@ extern unsigned long windowColor;
 
 /* Copyright (c) 1991 Bell Communications Research, Inc. (Bellcore) */
 
-#if defined __QNX__ || (defined(sco) && !defined(sco_os5))
+#if defined __QNX__ || (defined(sco) && !defined(sco_os5)) || defined(__NetBSD__)
 #define index strchr
 #else
 extern char *index();

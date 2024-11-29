@@ -65,6 +65,7 @@ PUBLIC int strncasecomp (CONST char * a, CONST char * b, int n)
 /*
 ** strcasestr(s1,s2) -- like strstr(s1,s2) but case-insensitive.
 */
+#ifndef __NetBSD__
 PUBLIC char * strcasestr (char * s1, char * s2)
 {
     char * ptr = s1;
@@ -85,6 +86,7 @@ PUBLIC char * strcasestr (char * s1, char * s2)
     }
     return NULL;
 }
+#endif
 
 
 

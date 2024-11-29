@@ -8,7 +8,7 @@
 WWW_MACH = netbsd
 
 # The ASIS repository's name for the machine we are on
-ASIS_MACH = netbsd/amiga
+ASIS_MACH = netbsd/amd64
 
 # Options for cc 
 #CC = cc
@@ -17,15 +17,20 @@ ASIS_MACH = netbsd/amiga
 
 # Options for gcc
 CC = gcc
-CFLAGS = -O -g -DNO_STRERROR
+CFLAGS = -O -g -DNO_STRERROR -I /usr/X11R7/include
+LFLAGS = -L /usr/X11R7/lib -Wl,-R/usr/pkg/lib
 #CFLAGS = -Wall -g -DNO_GETWD -DHAS_GETCWD 
 # CFLAGS = -Wall -g
 #LFLAGS = -static
 
+ifeq ($(shell uname -m),amd64)
+CFLAGS += -DPOINTER_IS_64BIT
+endif
+
 # In both cases: Ask for static linking so that binary will be transportable
 
 # Directory for installed binary:
-BINDIR = /usr/local/bin
+BINDIR = /usr/arena/bin
 #BINDIR = ../../LineMode/sun4
 
 #_________________ OK if normal W3 distribution
@@ -108,9 +113,9 @@ OE = $(OBJ)/.created
 
 WWWLIB = -L$(USELIBDIR) -lwww
 XLIB = -L$(XLIBDIR) -lX11
-JPEGLIB = $(JPEGDIR)/$(WWW_MACH)/libjpeg.a
-PNGLIB = $(PNGDIR)/$(WWW_MACH)/libpng.a
-ZLIB = $(ZLIBDIR)/$(WWW_MACH)/libz.a
+JPEGLIB = $(JPEGDIR)/Implementation/libjpeg.a
+PNGLIB = $(PNGDIR)/Implementation/libpng.a
+ZLIB = $(ZLIBDIR)/Implementation/libz.a
 
 OBJS = $(OBJ)/www.o $(OBJ)/display.o \
   $(OBJ)/scrollbar.o $(OBJ)/toolbar.o $(OBJ)/entities.o $(OBJ)/forms.o \

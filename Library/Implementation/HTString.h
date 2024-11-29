@@ -68,7 +68,9 @@ Case-insensitive strstr
    This works like strstr() but is not case-sensitive.
    
  */
+#ifndef __NetBSD__
 extern char * strcasestr (char * s1, char * s2);
+#endif
 /*
 
 Strip white space off a string

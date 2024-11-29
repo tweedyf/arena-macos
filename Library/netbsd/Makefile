@@ -5,7 +5,7 @@
 WWW_MACH = netbsd
 
 # The ASIS repository's name for the machine we are on
-ASIS_MACH = netbsd/amiga
+ASIS_MACH = netbsd/amd64
 
 # Options for ANSI acc 
 #CC = acc
@@ -20,7 +20,7 @@ CFLAGS = -Wall -g  -DNO_TIMEZONE
 # LFLAGS = -lresolv -static
 
 # Directory for installed binary:
-BINDIR = /usr/local/bin
+BINDIR = /usr/arena/bin
 
 #_________________ OK if normal W3 distribution
 # Where is the WWW source root?

@@ -45,7 +45,7 @@ void HTList_addObjectFirst (HTList *me, void *newObject) /* howcome 26/1/95 */
 }
 
 
-
+#ifndef __NetBSD__
 char *strndup(char *s, int n)
 {
     char *pp;
@@ -64,6 +64,7 @@ char *strndup(char *s, int n)
 
     return pp;
 }
+#endif
 
 /* str_tok: a reentrant strtok */
 

@@ -1551,7 +1551,9 @@ typedef struct s_edit_view
 /* util.c */
 
 void HTList_addObjectFirst (HTList *me, void *newObject);
+#ifndef __NetBSD__
 char *strndup(char *s, int n);
+#endif
 char *str_tok(char *a, char *b, char **c);
 char *chop_str(char *p);
 Byte hex2byte(char c);
