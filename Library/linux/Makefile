@@ -71,7 +71,7 @@ SHELL = /bin/sh
 #	self-documenting hypertext files.
 .SUFFIXES: .h .html
 .html.h:
-	www -w90 -na -p -to text/x-c $*.html > $*.h
+	#www -w90 -na -p -to text/x-c $*.html > $*.h
 
 #	If this is actually run in a subdirectory,
 # WWW = ../../..
