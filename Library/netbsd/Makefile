@@ -15,7 +15,7 @@ LFLAGS = -lresolv -Bstatic
 
 # Options for gcc
 CC = gcc
-CFLAGS = -Wall -g  -DNO_TIMEZONE
+CFLAGS = -Wall -g  -DNO_TIMEZONE -Wno-error=implicit-function-declaration
 # LFLAGS = -static
 # LFLAGS = -lresolv -static
 

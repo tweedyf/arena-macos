@@ -4,7 +4,7 @@
 # For W3 distribution, machine type for subdirectories
 WWW_MACH = linux
 
-CFLAGS = -g -Wall -DPOSIXWAIT -DNO_TIMEZONE -DNO_GMTOFF -DHAVE_STRERROR
+CFLAGS = -g -Wall -DPOSIXWAIT -DNO_TIMEZONE -DNO_GMTOFF -DHAVE_STRERROR -Wno-error=implicit-function-declaration
 LFLAGS =
 CC = cc
 

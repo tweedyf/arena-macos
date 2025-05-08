@@ -17,7 +17,7 @@ ASIS_MACH = netbsd/amd64
 
 # Options for gcc
 CC = gcc
-CFLAGS = -O -g -DNO_STRERROR -I /usr/X11R7/include
+CFLAGS = -O -g -DNO_STRERROR -I /usr/X11R7/include -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types -Wno-error=int-conversion -Wno-error=implicit-int
 LFLAGS = -L /usr/X11R7/lib -Wl,-R/usr/pkg/lib
 #CFLAGS = -Wall -g -DNO_GETWD -DHAS_GETCWD 
 # CFLAGS = -Wall -g

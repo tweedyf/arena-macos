@@ -3,7 +3,7 @@
 # For conditions of distribution and use, see copyright notice in zlib.h 
 
 CC=cc
-CFLAGS=-O
+CFLAGS=-O -Wno-error=implicit-function-declaration
 #use -O3 for gcc to take advantage of inlining
 #CFLAGS="-O -DMAX_WBITS=14 -DMAX_MEM_LEVEL=7"
 #CFLAGS=-g -DDEBUG

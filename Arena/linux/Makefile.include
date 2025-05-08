@@ -14,7 +14,7 @@ ASIS_MACH = linux/x86_64
 
 # Options for gcc
 CC = gcc
-CFLAGS = -O -g
+CFLAGS = -O -g -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types -Wno-error=int-conversion -Wno-error=implicit-int
 #CFLAGS = -Wall -g -DNO_GETWD -DHAS_GETCWD 
 # CFLAGS = -Wall -g
 LFLAGS = -static
