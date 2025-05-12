@@ -156,7 +156,7 @@ void SetFont(GC gc, int fontIndex)
     lineHeight = 2 + pFontInfo->max_bounds.ascent + pFontInfo->max_bounds.descent;
     chDescent = pFontInfo->max_bounds.descent;
     chStrike = lineHeight - 2 - (pFontInfo->max_bounds.ascent + chDescent)/2;
-    spWidth = XTextWidth(pFontInfo, " ", 1);
+    spWidth = XTextWidth(pFontInfo, "m", 1);
     chWidth = XTextWidth(pFontInfo, "ABCabc", 6)/6;
 }
 
@@ -225,7 +225,7 @@ void SetEmphFont(GC gc, XFontStruct *pFont, XFontStruct *pNormal)
     lineHeight = 2 + pNormal->max_bounds.ascent + pNormal->max_bounds.descent;
     chDescent = pNormal->max_bounds.descent;
     chStrike = lineHeight - 2 - (pFontInfo->max_bounds.ascent + chDescent)/2;
-    spWidth = XTextWidth(pFontInfo, " ", 1);
+    spWidth = XTextWidth(pFontInfo, "m", 1);
     chWidth = XTextWidth(pFontInfo, "ABCabc", 6)/6;
 }
 

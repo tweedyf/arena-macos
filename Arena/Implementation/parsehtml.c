@@ -34,6 +34,7 @@ now have emph added as unsigned int.
 #include "www.h"
 #include "tools.h"
 #include "style.h"
+#include "forms.h"
 
 #define LBUFSIZE 1024
 
@@ -1691,6 +1692,25 @@ int RecogniseTag(void)
 #endif
 
         return UNKNOWN; /* unknown tag */
+    }
+
+    if(memcmp(s, "script", 6) == 0){
+	    char* b = s + 6;
+
+	    EndTag = 0;
+	    TagLen = 0;
+	    TokenClass = EN_UNKNOWN;
+	    
+	    for(;;){
+		    if(memcmp(b, "</script>", 9) == 0) break;
+		    ++b;
+	    }
+
+	    b += 8;
+
+	    bufptr = b;
+
+	    return UNKNOWN;
     }
 
     if (*s == '/')
@@ -6434,6 +6454,13 @@ void ParseBody(int implied, Frame *frame, int left, int right, int margin)
             Here = left;
             continue;
         }
+
+	if (Token == TAG_STYLE)
+	{
+	    UnGetToken();
+	    ParseStyle(frame);
+	    continue;
+	}
 
         if (Token == ENDDATA)
         {

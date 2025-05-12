@@ -428,7 +428,7 @@ typedef struct sframe_struct
 #define str_cmp(a, b) ((a && b) ? strcasecmp(a, b) : (a || b))
 
 
-#define CHWIDTH(font)    XTextWidth(Fonts[font], " ", 1)
+#define CHWIDTH(font)    XTextWidth(Fonts[font], "m", 1)
 #define SPACING(font)    (2 + font->max_bounds.ascent + font->max_bounds.descent)
 #define BASELINE(font)   (1 + font->max_bounds.ascent)
 #define STRIKELINE(font) (font->max_bounds.ascent - font->max_bounds.descent + 1)
