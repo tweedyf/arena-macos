@@ -36,6 +36,13 @@ void HTList_addObjectFirst (HTList *me, void *newObject) /* howcome 26/1/95 */
     return;
   }
 
+  /* Additional validation: check if the pointer looks reasonable */
+  /* On most systems, valid pointers are aligned and not extremely small */
+  if ((unsigned long)me < 0x1000 || ((unsigned long)me & 0x3) != 0) {
+    /* This looks like a corrupted pointer, don't use it */
+    return;
+  }
+
   /* Use the standard HTList_addObject function which is safer */
   HTList_addObject(me, newObject);
 }

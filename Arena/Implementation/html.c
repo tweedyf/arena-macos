@@ -348,9 +348,9 @@ void ReloadDoc(char *name)
 	    FreeStyleSheet(CurrentDoc->style);
 	    CurrentDoc->style = NULL;
 	} else {
-	    FreeStyleSheet(CurrentDoc->style);
+	    /* Do not free context->style here! */
 	    CurrentDoc->style = NULL;
-	    context->style = StyleGetInit();
+	    /* context->style = StyleGetInit(); */
 	}
       
 	Free(CurrentDoc->head_style);

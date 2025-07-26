@@ -281,7 +281,9 @@ void DocFree(Doc *doc, Bool cut_anchor)
        other cases, the stat flag should be manipulated first */
 
     if (!doc || doc->nofree || doc->state == DOC_PENDING)
-	return;
+        return;
+
+    doc->nofree = 1;
 
     if (BRIDGE_TRACE)
 	if (doc->url != NULL)

@@ -293,9 +293,15 @@ void FreeStyleSheet(StyleSheet *s)
 	return;
 
     for(i = 0; i<TAG_LAST; i++) {
-	if ((l = s->element[i]))
-	    while ((r = (StyleRule *)HTList_nextObject(l)))
+	if ((l = s->element[i])) {
+	    /* First free all the rule objects */
+	    HTList *cur = l;
+	    while ((r = (StyleRule *)HTList_nextObject(cur)))
 		FreeStyleRule(r);
+	    /* Then free the list itself */
+	    HTList_delete(l);
+	    s->element[i] = NULL;
+	}
     }
     Free(s);
 }
@@ -1489,7 +1495,10 @@ static Bool ParseAssignment(char *s, StyleProperty *prop_p, long *value_p, int *
 	  case S_ALT_FONT_FAMILY:
 	    if (! *value_p)
 		*value_p = (long) HTList_new();
-	    HTList_addObjectFirst((HTList *)*value_p, (void *)strdup(str)); /* ughh */
+	    /* Additional validation before using the list */
+	    if (*value_p && (unsigned long)*value_p >= 0x1000 && ((unsigned long)*value_p & 0x3) == 0) {
+		HTList_addObjectFirst((HTList *)*value_p, (void *)strdup(str));
+	    }
 	    break;
 
 	  case S_FONT_SIZE:
@@ -1968,14 +1977,12 @@ void StyleParse()
 
 /*	rgbClear();*/
 
-	if (context->style) {
-	    FreeStyleSheet(context->style);
-	    context->style = StyleGetInit();
-	}
+	// Do not free context->style here to avoid double free
+	context->style = StyleGetInit();
 
 	StyleChew(context->style, CurrentDoc->head_style, S_USER);
 	StyleChew(context->style, CurrentDoc->link_style, S_USER);
-	CurrentDoc->style = context->style;
+	CurrentDoc->style = StyleCopy(context->style);
 	if (STYLE_TRACE) {
 	    fprintf(stderr,"Stylesane: context->style\n");
 	    StyleSane(context->style);
@@ -2076,7 +2083,7 @@ void StyleClearDoc()
 	Free(sel->flat);
     }
 
-    HTList_destroy(style_stack);
+    HTList_delete(style_stack);
     style_stack = NULL;
     current_flat = NULL;
 }
@@ -2238,7 +2245,7 @@ void FormatElementEnd()
     if (!stack_el) {
 	if (REGISTER_TRACE)
 	    fprintf(stderr,"stack empty!! \n");
-	HTList_destroy(style_stack);
+	HTList_delete(style_stack);
 	style_stack = NULL;
 	current_flat = NULL;
     } else {
