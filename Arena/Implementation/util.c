@@ -31,17 +31,13 @@ void HTList_destroy(HTList *me)
 
 void HTList_addObjectFirst (HTList *me, void *newObject) /* howcome 26/1/95 */
 {
-  while (me->next) {
-    me = me->next;
+  /* Check if the list pointer is valid */
+  if (!me) {
+    return;
   }
 
-  if (me) {
-    HTList *newNode = (HTList *)malloc (sizeof (HTList));
-    if (newNode == NULL) outofmem(__FILE__, "HTList_addObject");
-    newNode->object = newObject;
-    newNode->next = NULL;
-    me->next = newNode;
-  }
+  /* Use the standard HTList_addObject function which is safer */
+  HTList_addObject(me, newObject);
 }
 
 
