@@ -22,6 +22,7 @@ extern int LineNumber(EditorBuffer *);
 extern int ColNumber(EditorBuffer *);
 extern void NextLine(EditorBuffer *);
 extern void PrevLine(EditorBuffer *);
+void PaintFieldCursorBuffer(GC gc, unsigned long color, EditorBuffer *buffer, Field *field);
 
 #endif /* _ARENA_EDITOR_H_ */
 

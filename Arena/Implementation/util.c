@@ -45,27 +45,19 @@ void HTList_addObjectFirst (HTList *me, void *newObject) /* howcome 26/1/95 */
 }
 
 
-#ifndef __NetBSD__
-#ifndef __linux__
+#if !defined(__APPLE__)
 char *strndup(char *s, int n)
 {
-    char *pp;
-
-    pp = (char *)malloc(n+1);
-
-    if (!pp)
-    {
-        Beep();
-        fprintf(stderr, "ERROR: malloc failed, memory exhausted!\n");
-        exit(1);
-    }
-
-    strncpy(pp, s, n);
-    pp[n] = '\0';
-
-    return pp;
+    char *p;
+    int len;
+    if (!s) return NULL;
+    len = n;
+    p = (char *)malloc(len + 1);
+    if (!p) return NULL;
+    strncpy(p, s, len);
+    p[len] = '\0';
+    return p;
 }
-#endif
 #endif
 
 /* str_tok: a reentrant strtok */
