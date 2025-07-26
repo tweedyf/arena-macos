@@ -292,6 +292,12 @@ void FreeStyleSheet(StyleSheet *s)
     if (!s)
 	return;
 
+    /* Add a guard to prevent double free by checking if already freed */
+    if ((unsigned long)s < 0x1000) {
+	/* This looks like a corrupted or already freed pointer */
+	return;
+    }
+
     for(i = 0; i<TAG_LAST; i++) {
 	if ((l = s->element[i])) {
 	    /* First free all the rule objects */
@@ -1388,6 +1394,15 @@ BG_Style *StyleGetBackground(void *value_p, char *str)
     if(!strcmp(str,":"))
 	return (bg_style);
     
+    // Explicitly handle 'none' as transparent background
+    if (!strcasecmp(str, "none")) {
+        // Clear all background flags and image
+        bg_style->flag &= ~(S_BACKGROUND_COLOR | S_BACKGROUND_IMAGE | S_BACKGROUND_X_REPEAT | S_BACKGROUND_Y_REPEAT | S_BACKGROUND_FIXED | S_BACKGROUND_ORIGIN);
+        bg_style->image = NULL;
+        bg_style->r = bg_style->g = bg_style->b = 0;
+        return bg_style;
+    }
+    
     if (str[0] == '#') {
 	if (strlen(str) == 4) {
 	    bg_style->r = hex2byte(str[1]) * 17;
@@ -2079,8 +2094,13 @@ void StyleClearDoc()
     HTList *l = style_stack;
     StyleStackElement *sel;
 
+    if (!style_stack)
+	return;
+
     while ( (sel = (StyleStackElement *) HTList_nextObject(l) )) {
-	Free(sel->flat);
+	if (sel && sel->flat) {
+	    Free(sel->flat);
+	}
     }
 
     HTList_delete(style_stack);
