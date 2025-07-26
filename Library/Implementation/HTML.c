@@ -1,3 +1,4 @@
+#include <stdio.h>
 /*									 HTML.c
 **	STRUCTURED STREAM TO RICH HYPERTEXT CONVERTER
 **
@@ -725,7 +726,7 @@ PUBLIC int HTML_flush (HTStructured * me)
 /*	Free an HTML object
 **	-------------------
 **
-** If the document is empty, the text object will not yet exist.
+**	If the document is empty, the text object will not yet exist.
    So we could in fact abandon creating the document and return
    an error code.  In fact an empty document is an important type
    of document, so we don't.

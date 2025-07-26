@@ -13,6 +13,8 @@
 **
 */
 
+#include <stdio.h>
+
 /* Library include files */
 #include "tcp.h"
 #include "HTUtils.h"

@@ -1,3 +1,4 @@
+#include <stdio.h>
 /*								     HTAccess.c
 **	ACCESS MANAGER
 **

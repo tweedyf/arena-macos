@@ -15,6 +15,7 @@
 #include "HTParse.h"
 #include "HTString.h"
 #include "HTTCP.h"
+#include <stdio.h>
 
 struct struct_parts {
 	char * access;		/* Now known as "scheme" */

@@ -1,3 +1,4 @@
+#include <stdio.h>
 /*							       	     HTDir.c
 **	DIRECTORY BROWSING
 **

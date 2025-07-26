@@ -13,6 +13,7 @@
 #include "tcp.h"
 #include "HTUtils.h"
 #include "HTEscape.h"					 /* Implemented here */
+#include <stdio.h>
 
 #define HEX_ESCAPE '%'
 #define ACCEPTABLE(a)	( a>=32 && a<128 && ((isAcceptable[a-32]) & mask))

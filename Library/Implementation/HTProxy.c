@@ -15,6 +15,7 @@
 **       4 Jun 95 Written on a rainy day
 */
 
+#include <stdio.h>
 #if !defined(HT_DIRECT_WAIS) && !defined(HT_DEFAULT_WAIS_GATEWAY)
 #define HT_DEFAULT_WAIS_GATEWAY "http://www.w3.org:8001/"
 #endif

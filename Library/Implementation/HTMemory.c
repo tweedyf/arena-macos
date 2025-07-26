@@ -13,6 +13,7 @@
 #include "HTUtils.h"
 #include "HTList.h"
 #include "HTMemory.h"					 /* Implemented here */
+#include <stdio.h>
 
 PRIVATE HTList * HTMemCall = NULL;		    /* List of memory freers */
 PRIVATE HTMemory_exitCallback * PExit = NULL;	  /* panic and exit function */

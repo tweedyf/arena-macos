@@ -1,3 +1,4 @@
+#include <stdio.h>
 /*							       	     HTNDir.c
 **	GENERIC NEWS LISTINGS
 **

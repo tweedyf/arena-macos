@@ -1,3 +1,4 @@
+#include <stdio.h>
 /*                                                                         Socket I/O Manager
                       MANAGES READ AND WRITE TO AND FROM THE NETWORK
                                              

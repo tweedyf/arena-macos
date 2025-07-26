@@ -24,6 +24,7 @@
 #include "HTUtils.h"
 #include "HTString.h"
 #include "HTAssoc.h"					 /* Implemented here */
+#include <stdio.h>
 
 PUBLIC HTAssocList *HTAssocList_new (void)
 {

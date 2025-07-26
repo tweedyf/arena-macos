@@ -1,3 +1,4 @@
+#include <stdio.h>
 /*							             HTConlen.c
 **	CONTENT LENGTH COUNTER STREAM
 **

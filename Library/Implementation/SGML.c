@@ -1,3 +1,4 @@
+#include <stdio.h>
 /*									 SGML.c
 **	GENERAL SGML PARSER CODE
 **

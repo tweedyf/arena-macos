@@ -13,6 +13,7 @@
 #include "tcp.h"
 #include "HTUtils.h"
 #include "HTList.h"
+#include <stdio.h>
 
 PUBLIC HTList * HTList_new (void)
 {

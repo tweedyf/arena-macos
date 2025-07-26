@@ -25,6 +25,7 @@
 #include "HTReqMan.h"
 #include "HTParse.h"
 #include "HTCache.h"					 /* Implemented here */
+#include <stdio.h>
 
 /*
 ** The cache limit is the number of files which are kept. Yes, I know,

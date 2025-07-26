@@ -21,6 +21,7 @@
 #include "HTTCP.h"
 #include "HTList.h"
 #include "HTError.h"					 /* Implemented here */
+#include <stdio.h>
 
 struct _HTError {
     HTErrorElement 	element;        /* Index number into HTError */

@@ -7,6 +7,7 @@
 **      Now 13 95	Spwaned from HTString.c
 */
 
+#include <stdio.h>
 #include <time.h>
 
 /* Library include files */

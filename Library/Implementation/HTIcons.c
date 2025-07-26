@@ -1,3 +1,4 @@
+#include <stdio.h>
 /*								       HTIcon.c
 **	ICON MANAGEMENT
 **

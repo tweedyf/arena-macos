@@ -26,6 +26,7 @@
 #include "HTMLPDTD.h"
 #include "HTStruct.h"
 #include "HTFormat.h"
+#include <stdio.h>
 
 /*		HTML Object
 **		-----------

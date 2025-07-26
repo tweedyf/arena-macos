@@ -28,6 +28,8 @@
 #include "HTNetMan.h"
 #include "HTDNS.h"
 #include "HTTCP.h"					 /* Implemented here */
+#include <unistd.h>
+#include <pwd.h>
 
 /* VMS stuff */
 #ifdef VMS

@@ -1,3 +1,4 @@
+#include <stdio.h>
 /*								     HTBind.c
 **	FILE SUFFIX BIND MANAGER
 **

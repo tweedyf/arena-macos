@@ -1,3 +1,4 @@
+#include <stdio.h>
 /*								      HTStyle.c
 **	STYLE IMPLEMENTATION FOR HYPERTEXT
 **

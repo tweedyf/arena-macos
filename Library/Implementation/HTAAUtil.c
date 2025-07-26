@@ -53,6 +53,7 @@
 #include "HTString.h"
 #include "HTAAUtil.h"	/* Implemented here	*/
 #include "HTAssoc.h"	/* Assoc list		*/
+#include <stdio.h>
 
 
 /* PUBLIC						HTAAScheme_enum()

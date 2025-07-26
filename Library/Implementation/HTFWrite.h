@@ -1,3 +1,4 @@
+#include <stdio.h>
 /*                                                                         ANSI C FILE Stream
                               WRTING TO A FILE USING ANSI C
                                              
