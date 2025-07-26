@@ -90,10 +90,19 @@ void HomeDoc()
 	CurrentDoc = (Doc *) context->home_anchor->parent->document;
 	CurrentDoc->show_raw = FALSE;
 	NewBuffer(CurrentDoc);
-	DeltaHTMLPosition(context->current_history->y);
+	
+	/* Check if current_history is valid before accessing its members */
+	if (context->current_history) {
+	    DeltaHTMLPosition(context->current_history->y);
+	    SetScrollBarVPosition(context->current_history->y, buf_height);
+	} else {
+	    /* If no history, just go to the top */
+	    DeltaHTMLPosition(0);
+	    SetScrollBarVPosition(0, buf_height);
+	}
+	
 	DisplayDoc(WinLeft, WinTop, WinWidth, WinHeight);
 	SetScrollBarHPosition(PixelIndent, buf_width);
-	SetScrollBarVPosition(context->current_history->y, buf_height);
 	DisplayScrollBar();
 	Announce(CurrentDoc->url);
     }
