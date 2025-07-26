@@ -6086,8 +6086,8 @@ void ParseTable(int implied, Frame *frame, int left, int right)
 
     FormatElementStart(Token, NULL, 0);
 
-    new_frame = Pop();
-    Push(new_frame);
+    /* Create a new frame for the table */
+    new_frame = BeginFrame(frame, 0, border, left, right, (BG_Style *)StyleGet(S_BACKGROUND));
 
     damn_table = 1; /* debug table format */
 
@@ -6243,6 +6243,12 @@ void ParseTable(int implied, Frame *frame, int left, int right)
     Here = left;
     PixOffset += (int)StyleGet(S_MARGIN_BOTTOM);
     FormatElementEnd();
+    
+    /* Frame cleanup - let the normal cleanup process handle it */
+    new_frame->length = paintlen - new_frame->info - FRAMESTLEN;
+    new_frame->height = PixOffset - new_frame->offset;
+    PrintFrameLength(new_frame);
+    
     damn_table = 0;
 }
 
@@ -6523,6 +6529,12 @@ long ParseHTML(int *width, BOOL style_parse)
     Image *image;
     char *quoted_name;
     int i;
+
+    /* Check if buffer is valid before proceeding */
+    if (!buffer) {
+        if (width) *width = 0;
+        return 0;
+    }
 
     PixOffset = 5;
     LastBufPtr = bufptr = buffer+hdrlen;
