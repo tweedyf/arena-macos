@@ -1,0 +1,43 @@
+#  Make WWW under unix for macos
+#
+
+# For W3 distribution, machine type for subdirectories
+WWW_MACH = macos
+
+# The ASIS repository's name for the machine we are on
+ASIS_MACH = macos/x86_64
+
+# Options for cc 
+#CC = cc
+#CFLAGS = -DDEBUG
+#LFLAGS = -Bstatic
+
+# Options for gcc
+CC = gcc
+CFLAGS = -O -g -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types -Wno-error=int-conversion -Wno-error=implicit-int
+#CFLAGS = -Wall -g -DNO_GETWD -DHAS_GETCWD 
+# CFLAGS = -Wall -g
+LFLAGS =
+
+ifeq ($(shell uname -m),x86_64)
+CFLAGS += -DPOINTER_IS_64BIT
+endif
+
+# Directory for installed binary:
+# BINDIR = /usr/local/bin
+BINDIR = /usr/arena/bin
+
+# Where is the WWW source root?
+WWW = ../..
+
+# Where should temporary (object) files go?
+# WTMP = /usr/tmp
+WTMP = $(WWW)
+
+# Where is the W3 object library?
+#LIBDIR = $(WWW)/Library/Implementation/$(WWW_MACH)
+
+USELIBDIR = ../../Library/$(WWW_MACH)
+XLIBDIR = /opt/X11/lib
+OTHERLIB = -lm 
+ZLIB = /opt/homebrew/opt/zlib/lib/libz.a 
