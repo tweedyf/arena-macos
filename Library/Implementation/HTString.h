@@ -68,7 +68,7 @@ Case-insensitive strstr
    This works like strstr() but is not case-sensitive.
    
  */
-#ifndef __NetBSD__
+#if !defined(__APPLE__)
 extern char * strcasestr (char * s1, char * s2);
 #endif
 /*

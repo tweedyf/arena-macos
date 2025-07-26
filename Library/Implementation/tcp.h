@@ -1118,7 +1118,7 @@ extern int errno;
 #define socerrno errno
 #endif
 
-#ifndef HAVE_STRERROR                             /* Otherwise use the table */
+#if !defined(__APPLE__)
 extern char *sys_errlist[];
 extern int sys_nerr;
 #endif
