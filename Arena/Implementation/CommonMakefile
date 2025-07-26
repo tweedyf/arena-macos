@@ -64,7 +64,9 @@ WWWLIB = -L$(USELIBDIR) -lwww
 XLIB = -L$(XLIBDIR) -lX11
 JPEGLIB = $(JPEGDIR)/Implementation/libjpeg.a
 PNGLIB = $(PNGDIR)/Implementation/libpng.a
-ZLIB = $(ZLIBDIR)/Implementation/libz.a
+# Remove hardcoded ZLIB path and use the variable from Makefile.include
+#ZLIB = $(ZLIBDIR)/Implementation/libz.a
+# Instead, ZLIB is set in Makefile.include for each platform
 
 OBJS = $(OBJ)/www.o $(OBJ)/display.o \
   $(OBJ)/scrollbar.o $(OBJ)/toolbar.o $(OBJ)/entities.o $(OBJ)/forms.o \
