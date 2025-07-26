@@ -1,0 +1,27 @@
+# Build artifacts
+*.o
+*.a
+arena
+
+# Image library build artifacts
+Image/*/Implementation/*.o
+Image/*/Implementation/*.a
+Image/*/Implementation/cjpeg
+Image/*/Implementation/djpeg
+Image/*/Implementation/jpegtran
+Image/*/Implementation/rdjpgcom
+Image/*/Implementation/wrjpgcom
+Image/*/Implementation/pngtest
+
+# macOS specific
+.DS_Store
+*.dSYM/
+
+# Editor files
+*~
+*.swp
+*.swo
+
+# Debug files
+*.core
+*.gdb 
